@@ -72,5 +72,16 @@
 
 ## Token
 
-3-way handshake<br>
-HTTP 지속연결(Persisten Connections)
+### JWT(json web token)이란 ?
+
+- 객체 인증에 필요한 정보를 비밀키로 서명한 토큰으
+- 인증(Authentication) & 권한허가(Authorization) 방식
+
+### jWT 인증 방식
+
+<img src="./img_4.png" width="80%" height = "80%">
+
+1. 클라이언트에서 로그인
+2. 서버의 `secret key`로 `jwt token` 생성, 전달
+3. 서버에 요청할 때 헤더에 `jwt token`을 함께 전달
+4. 서버에서 인증
