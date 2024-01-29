@@ -51,14 +51,20 @@
 - Handler(Controller)
 - ModelAndView
 - ViewResolver
-![img_4.png](img_4.png)
+
+![img_6.png](img_6.png)
 
 #### DispatcherServlet
 > - 제일 앞단에서 HTTP Request를 처리하는 Controller
 > - Spring MVC에서는 HTTP Request가 왔을 때 DispatcherServlet이라 불리는 서블릿이 HTTP Request를 처리한 Controller를 지정한다.
 > - DispatcherServlet은 일종의 HTTP Request를 처리할 Controller를 지정하는 Controller로 Super Controller 역할
 
-#### Controller
+#### HandlerAdapter
+> - DispatcherServlet이 지정한 Controller를 실행하는 역할
+> - 다양한 형태의 핸들러(컨트롤러)가 있기 때문에 DispatcherServlet은 어떤 핸들러를 실행해야 하는지 알 수 없다.
+> - Controller interface, @Controller, ...
+
+#### Controller(Hanlder)
 > - HTTP Request를 처리해 Model을 만들고 View를 지정
 > - DispatcherServlet에 의해 배정된 Controller는 HTTP Request를 처리하고, HTTP Request의 메시지를 처리해 필요한 데이터를 뽑아 Model에 저장
 > - HTTP Request에 따라서 HTTP가 보여줄 View Name을 지정
@@ -67,6 +73,7 @@
 - Controller에 의해 반환된 Model과 View가 Wrapping된 객체
 - Model : Map<String, Value>형태의 데이터 저장소
 - Model은 Map 자료 구조로, HTTP Request 속의 데이터를 파싱해 Key-Value 형태로 만들어 저장한다.
+
 ```java
 // 개별 조회 창 띄우기
 public ModelAndView programEvaluation(Map<?, ?> rqstMap) throws Exception {
@@ -99,6 +106,8 @@ public ModelAndView programEvaluation(Map<?, ?> rqstMap) throws Exception {
 - View는 사용자에게 보여줄 완성된 View이며, 그대로 유저에게 반환된다.
 - 특정한 url로 들어갔을 때 우리에게 보여지는 View가 이곳에서 만들어지는 View이다.
 
+![](img_4.png)
+
 ## 장점
 >1. 컴포넌트의 명확한 역할 분리로 인해 서로간의 결합도를 낮출 수 있다.
 > - Model은 데이터 및 비즈니스 로직 담당
@@ -123,10 +132,12 @@ public ModelAndView programEvaluation(Map<?, ?> rqstMap) throws Exception {
 ![img_3.png](img_3.png)
 - MVC 패턴의 한계를 극복하기 위해 개발된 패턴중 하나
 - View Model은 View와 Model 사이의 중개자 역할
-- View를 보여주기 위한 데이터 처리 역할
+- View를 보여주기 위한 데이터 처리 역할(UI 로직에 중점)
 
 ### `MVP` : Model-View-Presenter 패턴
 ![img_5.png](img_5.png)
-- Presenter는 Controller와 비슷하지만, View에 직접 연결되지 않고 사용자 인터페이스를 통해 상호작용
+- Presenter는 Controller와 비슷하지만, Controller는 View에 직접 연결되지 않고 사용자 인터페이스를 통해 상호작용
 - View에서 요청한 정보를 통해 Model을 가공하여 View로 전달해주는 방식
+- MVC는 Controller가 사용자의 입력을 처리하고 View를 업데이트하는 단방향 구조
+- MVP는 View와 Presenter간의 양방향 통신 구조
 - Presenter가 모든 로직 처리
