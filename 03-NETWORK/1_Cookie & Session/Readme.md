@@ -74,8 +74,10 @@
 
 ### JWT(json web token)이란 ?
 
-- 객체 인증에 필요한 정보를 비밀키로 서명한 토큰으
-- 인증(Authentication) & 권한허가(Authorization) 방식
+- 객체 인증에 필요한 정보를 비밀키로 서명한 토큰이다
+- 인증(Authentication) & 권한허가(Authorization) 방식이다
+- 서버에서는 키를 클라이언트에서 정보를 저장한다
+- cookie/session보다 데이터 자체가 길어 인증 요청에 부하가 더 많다
 
 ### jWT 인증 방식
 
