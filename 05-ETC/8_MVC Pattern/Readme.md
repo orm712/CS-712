@@ -141,3 +141,4 @@ public ModelAndView programEvaluation(Map<?, ?> rqstMap) throws Exception {
 - MVC는 Controller가 사용자의 입력을 처리하고 View를 업데이트하는 단방향 구조
 - MVP는 View와 Presenter간의 양방향 통신 구조
 - Presenter가 모든 로직 처리
+- java swing, javafx에서 활용
