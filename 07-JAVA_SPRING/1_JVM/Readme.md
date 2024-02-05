@@ -1,7 +1,7 @@
 # 1. JVM이 정확히 무엇이고, 어떤 기능을 하는지 설명해 주세요.
 ## JVM이란?
 JVM(Java Virtual Machine, 자바 가상 머신)은 Java Application을 실행하는 런타임 엔진 역할을 하는 컴포넌트로, JRE(Java Runtime Environment)의 일부입니다.
-### [Java SE8 사양 문서의 설명](https://docs.oracle.com/javase/specs/jvms/se8/html/jvms-1.html#jvms-1.2)의 설명
+### [Java SE8 사양 문서의 설명](https://docs.oracle.com/javase/specs/jvms/se8/html/jvms-1.html#jvms-1.2)
 >Java Platform의 주춧돌 역할을 하는 컴포넌트로 하드웨어 및 운영체제 독립성, 컴파일된 코드의 작은 크기, 악의적인 프로그램으로부터의 사용자 보호를 담당합니다.  
 >JVM은 실제 컴퓨터처럼 추상적인 연산 기계입니다. 따라서 명령어 셋을 가지고 있고, 런타임에 다양한 메모리 영역을 조작합니다.  
 >이러한 형태는 가상 머신을 쓰는 프로그래밍 언어를 구현하는데 있어 일반적인 형태로, JVM 이외에도 `P-Code(UCSD Pascal)`, `Squeak(Smalltalk)` 등이 있습니다.  
@@ -38,13 +38,15 @@ JVM의 구조는 위 그림과 같습니다.
 ### JVM 메모리 영역(JVM Memory, Runtime Data Area)
 `메서드 영역(Method Area)`, `힙 영역(Heap Area)`, `스택 영역(Stack Area)`, `PC 레지스터(PC Registers)`, `네이티브 메서드 스택(Native Method Stacks)`으로 구성되어 있습니다.
 #### 공유 자원
-- `메서드 영역(Method Area)`: *클래스 이름, 직속 부모 클래스 이름, 메서드 및 변수(정적 변수 포함)*와 같은 모든 **`클래스 레벨 정보`**들이 저장됩니다. JVM 당 하나만 존재하며, 공유됩니다.
+- `메서드 영역(Method Area)`: *클래스 이름, 직속 부모 클래스 이름, 메서드 및 변수*(*정적 변수 포함*)와 같은 모든 <code>**클래스 레벨 정보**</code>들이 저장됩니다. JVM 당 하나만 존재하며, 공유됩니다.
 - `힙 영역(Heap Area)`: 모든 `동적으로 생성된 객체(즉, 인스턴스)의 정보`가 저장되어 있습니다. JVM 당 하나만 존재하며, 공유됩니다.
 #### 개별 자원
-- `스택 영역(Stack Area)`: JVM이 각 스레드마다 사용할 런타임 스택을 생성하는 공간입니다. 런타임 스택의 모든 블록은 `활성화 레코드(Activation Record)` 또는 `스택 프레임(Stack Frame)`이라고 부르는 **`메서드 호출`**을 저장하는 블록입니다.  
-프레임에는 해당 **`메서드에서 사용되는 모든 로컬 변수`**가 저장됩니다. 런타임 스택을 사용하던 스레드가 종료되면 JVM에 의해 스택이 파괴됩니다.
-- `PC 레지스터(PC Registers)`: 각 스레드 별로 존재하며, **`스레드의 현재 실행 명령의 주소`**를 저장합니다.
-- `네이티브 메서드 스택(Native Method Stacks)`: 각 스레드 별로 존재하며, **`네이티브 메서드 정보`**를 저장합니다.
+- `스택 영역(Stack Area)`: JVM이 각 스레드마다 사용할 런타임 스택을 생성하는 공간입니다. 런타임 스택의 모든 블록은 `활성화 레코드(Activation Record)` 또는 `스택 프레임(Stack Frame)`이라고 부르는 <code>**메서드 호출**</code>을 저장하는 블록입니다.  
+프레임에는 해당 <code>**메서드에서 사용되는 모든 로컬 변수**</code>가 저장됩니다. 런타임 스택을 사용하던 스레드가 종료되면 JVM에 의해 스택이 파괴됩니다.
+- `PC 레지스터(PC Registers)`: 각 스레드 별로 존재하며, <code>**스레드의 현재 실행 명령의 주소**</code>를 저장합니다.
+- `네이티브 메서드 스택(Native Method Stacks)`: 각 스레드 별로 존재하며, <code>**네이티브 메서드 정보**</code>를 저장합니다. 만약 네이티브 메서드를 호출할 때 매개변수를 넘겼다면 해당 매개변수를 저장합니다.
+네이티브 메서드가 실행되면 스레드는 자바 스택에서 네이티브 메서드 스택으로 전환합니다.  
+![switch_native_method_stacks.png](switch_native_method_stacks.png)
 ### 실행 엔진(Execution Engine)
 바이트 코드로 변환된 `.class` 파일을 한 줄씩 읽고 메모리 영역에 존재하는 데이터와 정보를 이용해 명령어를 실행합니다.  
 `인터프리터(Interpreter)`, `JIT 컴파일러(Just-In-Time Compiler)`, `가비지 컬렉터(Garbage Collector)` 로 구성되어 있습니다.
@@ -63,7 +65,7 @@ JVM이 C/C++ 라이브러리를 호출하거나, 특정 하드웨어에서는 C/
 
 ## 그럼, 자바 말고 다른 언어는 JVM 위에 올릴 수 없나요?
 자바 이외에도 `Scala`, `Kotlin`, `Groovy`, `Clojure` 등 다른 언어들을 실행할 수 있습니다.  
-JVM에 의해 호스팅 될 수 있는 유효한 class 파일일로 표현할 수 있는 기능(Functionality)를 가진 언어라면 JVM 상에서 실행될 수 있습니다.  
+JVM에 의해 호스팅 될 수 있는 유효한 class 파일로 표현할 수 있는 기능(Functionality)를 가진 언어라면 JVM 상에서 실행될 수 있습니다.  
 또한 이들은 호환 가능한데, Scala의 라이브러리를 Java 프로그램에서 사용할 수 있는것이 그 예 입니다. [#위키피디아 문서의 설명](https://en.wikipedia.org/wiki/Java_virtual_machine#JVM_languages) [#Scala에서 Java 라이브러리 사용하기](https://pinnsg.com/using-java-libraries-scala/)
 
 ## 반대로 JVM 계열 언어를 일반적으로 컴파일해서 사용할 순 없나요?
@@ -102,12 +104,6 @@ JVM과 그 위에 실행되는 프로그램은 부모 - 자식 관계를 갖는�
 JVM은 Java Application 코드를 실행하기 위해 *`main()` 메서드를 실행하는 스레드를 포함해* 하나 이상의 스레드를 관리합니다.   
 또한 자식 프로세스가 부모로 부터 완전히 독립적인 '부모 - 자식 프로세스' 관계와 달리, Java Application은 JVM과 긴밀하고 JVM으로부터 메모리 할당, GC 등의 지원을 받습니다.
 따라서 프로세스 - 스레드 관계에 있다고 봐야합니다.
-
-자바는 링크 과정 없이 컴파일러가 바로 바이트 코드 생성
-바이트 코드는 JVM에서만 실행 가능
-자바는 필요한 클래스들을 프로그램 실행 중에 동적으로 로딩
-동적 로딩은 JVM에 포함된 클래스 로더에 의해 이루어짐
-ClassLoader  클래스를 이용하여 개발자가 직접 클래스 로딩가능
 
 # 참고 문서
 - [The Java Virtual Machine by Bill Venners](https://www.artima.com/insidejvm/ed2/jvm.html)
