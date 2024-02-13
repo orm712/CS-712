@@ -14,7 +14,8 @@
 
 ## WAS
 > 웹 어플리케이션 서버
-> - 웹 서버와 웹 컨테이너가 합쳐진 형태
+> - 웹 서버와 웹 컨테이너(Servlet Container)가 합쳐진 형태
+>   - Servlet Container안에는 `DispatcherServlet`이 존재
 > - 자바, JSP 등으로 만든 웹 또는 API 어플리케이션을 실행할 때 사용
 > - 데이터베이스 처리 역할
 > - 웹과 서버 사이의 어플리케이션
@@ -35,12 +36,17 @@
 
 ![img.png](img.png)
 
+## 동기/블로킹, 비동기/논블로킹
+![img_6.png](img_6.png)
+
+
 ## Tomcat
-> - 서블릿 API 지원
-> - 블로킹, 동기 방식 사용
+> - `서블릿 API` 지원
+> - `블로킹, 동기` 방식 사용
 > - 요청당 하나의 쓰레드로 동작
+> - `Spring MVC`를 사용할 때, WAS로 Tomcat을 사용
 > - 비동기 처리 기능이 지원되긴 하지만, 서블릿이 응답을 기다리는 동안 pool의 쓰레드들은 여전히 지연시킬 수 있음
-> - Thread Pool은 요청자 어플리케이션 구동 시에 미리 쓰레드들을 할당해두고, Request가 오면 Queue에 쌓이고, 남는 Thread가 있다면, 해당 Thread에 할당되어 처리
+> - `Thread Pool`은 요청자 어플리케이션 구동 시에 미리 쓰레드들을 할당해두고, Request가 오면 Queue에 쌓이고, 남는 Thread가 있다면, 해당 Thread에 할당되어 처리
 >   - 한 개의 요청 -> 한 개의 쓰레드
 > - 각 쓰레드에서는 Blocking 방식으로 처리되어, 응답이 올 때까지 그 Thread는 다른 요청에 할당될 수 없음
 > - 가용한 Thread가 다 찬 경우, Request는 큐에서 계속 대기
@@ -50,9 +56,11 @@
 
 ---
 ## Netty
+> - Java NIO 기반
+>   - 비동기 I/O 라이브러리
 > - 비동기 이벤트 기반 네트워크 어플리케이션 프레임워크
-> - 논블로킹, 비동기 방식 사용
-> - WebFlux를 사용할때, WAS로 Netty를 사용
+> - `논블로킹, 비동기` 방식 사용
+> - `Spring WebFlux`를 사용할때, WAS로 Netty를 사용
 > - 하나의 쓰레드가 동시에 여러 개의 작업 수행
 > - 각 요청은 event loop내에 job으로 등록이 되고, job을 workers하고 제공하고, 응답을 기다리지 않고 다른 job을 처리한다.
 >   - callback을 통해, workers에게 응답 결과가 오면, 그 결과를 요청자에게 반환
