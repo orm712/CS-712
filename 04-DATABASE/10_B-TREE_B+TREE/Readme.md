@@ -106,3 +106,16 @@ RBT는 B 트리/B+ 트리와 마찬가지로 `자가 균형 이진 검색 트리
 B 트리의 경우 내림차순 정렬을 시도할 경우, 모든 노드들을 역순으로 하나 하나 탐색해야 합니다. 따라서 B+ 트리 대비 낮은 성능을 보입니다.  
 ## B+ 트리의 경우
 B+ 트리의 경우 내림차순 정렬을 시도할 경우, 리프 노드만 역순으로 탐색하면 되고, 리프 노드들이 링크드 리스트 형태를 띄고 있으므로 순차 접근에 최적화 되어있어 더 높은 성능을 보입니다.  
+
+# 참고 문서
+- [Self-balancing binary search tree - Wikipedia](https://en.wikipedia.org/wiki/Self-balancing_binary_search_tree)
+- [Self-Balancing Binary Search Trees | Baeldung on Computer Science](https://www.baeldung.com/cs/self-balancing-bts)
+- [B-tree - Wikipedia](https://en.wikipedia.org/wiki/B-tree)
+- [Introduction of B-Tree - GeeksforGeeks](https://www.geeksforgeeks.org/introduction-of-b-tree-2/)
+- [B+ tree - Wikipedia](https://en.wikipedia.org/wiki/B%2B_tree)
+- [Introduction of B+ Tree - GeeksforGeeks](https://www.geeksforgeeks.org/introduction-of-b-tree/)
+- [Difference between B tree and B+ tree - GeeksforGeeks](https://www.geeksforgeeks.org/difference-between-b-tree-and-b-tree/)
+- [The Difference Between B-trees and B+trees | Baeldung on Computer Science](https://www.baeldung.com/cs/b-trees-vs-btrees)
+- [MySQL Ascending index vs Descending index - tech.kakao.com](https://tech.kakao.com/2018/06/19/mysql-ascending-index-vs-descending-index/)
+- [Red–black tree - Wikipedia](https://en.wikipedia.org/wiki/Red%E2%80%93black_tree)
+- [How does B-tree make your queries fast? - allegro.tech](https://blog.allegro.tech/2023/11/how-does-btree-make-your-queries-fast.html)
