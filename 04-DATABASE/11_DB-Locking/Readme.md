@@ -12,26 +12,36 @@
 설명의 편의를 위해 병행 실행되는 트랜잭션 두 가지를 아래에서 T1, T2라고 부르도록 하겠습니다.
 #### 갱신 분실(Lost Update)
 ![Lost-Update.png](Lost-Update.png)
+
 두 트랜잭션이 병렬로 같은 데이터를 읽고 갱신하는 과정에서, 한 트랜잭션이 다른 트랜잭션의 갱신 값을 덮어쓰는 문제입니다.
-예시) T1이 연산 후 갱신 작업을 수행한 뒤, 이후에 T2가 갱신된 값이 아닌 이전의 값을 기준으로 연산 후 갱신 작업을 수행해 T1의 갱신이 무효화 됩니다.
+> 예시) T1이 연산 후 갱신 작업을 수행한 뒤, 이후에 T2가 갱신된 값이 아닌 이전의 값을 기준으로 연산 후 갱신 작업을 수행해 T1의 갱신이 무효화 됩니다.
+
 #### 모순적 읽기(Inconsistent Read) 
 두 트랜잭션이 병렬로 같은 데이터를 읽고 갱신하는 과정에서, 데이터 불일치가 발생하는 문제입니다.
 ##### Dirty Read
 ![Dirty-Read.png](Dirty-Read.png)
+
 격리성 수준이 `Read Uncommitted` 이하인 환경에서 발생가능한 문제로, 한 트랜잭션이 다른 트랜잭션으로부터 **커밋되지 않은 값을 읽어 발생**하는 문제입니다.  
-예시) T1이 커밋되기 전, 중간에 T2가 T1에서 작업하던 데이터(*T1의 **수정**이 **반영되지 않은***)을 읽고 작업을 수행해 T1 연산 이전의 값으로 T2가 수행되게 됩니다. 이는 정확하지 않거나 일관되지 않은 결과를 야기할 수 있습니다.  
+> 예시) T1이 커밋되기 전, 중간에 T2가 T1에서 작업하던 데이터(*T1의 **수정**이 **반영되지 않은***)을 읽고 작업을 수행해 T1 연산 이전의 값으로 T2가 수행되게 됩니다. 이는 정확하지 않거나 일관되지 않은 결과를 야기할 수 있습니다.  
+
 ##### Non-repeatable Read
 ![Non-repeatable-Read.png](Non-repeatable-Read.png)
+
 같은 데이터를 한 트랜잭션 내에서 읽었음에도, 둘의 값이 다른 문제입니다.  
-예시) T1이 한 데이터를 두 번 읽을 때, 중간에 T2가 해당 데이터의 값을 변경한 뒤 커밋하게 되면 두 번째로 읽었을 때의 값은 처음 읽었던 값과 다르게 됩니다.  
+> 예시) T1이 한 데이터를 두 번 읽을 때, 중간에 T2가 해당 데이터의 값을 변경한 뒤 커밋하게 되면 두 번째로 읽었을 때의 값은 처음 읽었던 값과 다르게 됩니다.  
+
 ##### Phantom Read
 ![Phantom-Read.png](Phantom-Read.png)
+
 같은 조건에 대한 검색을 한 트랜잭션 내에서 수행했음에도, 다시 읽으려 할 때 이전에 존재하던 값이 없어지거나, 새로운 값이 추가로 검색되는 문제입니다.  
-예시) T1이 한 데이터를 두 번 읽을 때, 중간에 T2가 해당 데이터를 삭제한 뒤 커밋하게 되면 두 번째로 읽었을 때 해당 데이터는 존재하지 않게 됩니다.  
+> 예시) T1이 한 데이터를 두 번 읽을 때, 중간에 T2가 해당 데이터를 삭제한 뒤 커밋하게 되면 두 번째로 읽었을 때 해당 데이터는 존재하지 않게 됩니다.  
+
 #### 연쇄적 롤백(Cascading Rollback)
 ![Cascading-Rollback.png](Cascading-Rollback.png)
+
 한 트랜잭션이 갱신한 데이터를 다른 트랜잭션이 또 다시 갱신한 뒤, 앞선 트랜잭션을 롤백하려할 때 이후 실행했던 트랜잭션도 롤백해야 하나 이미 해당 트랜잭션은 완료되어 롤백이 불가능한 문제입니다.  
-예시) T1이 한 데이터를 갱신한 뒤, T2이 해당 데이터를 또 갱신한 뒤 완료처리한 상태에서 T1을 롤백하려 하면 T2이 처리한 부분에 대해서는 롤백이 불가능하게 됩니다.  
+> 예시) T1이 한 데이터를 갱신한 뒤, T2이 해당 데이터를 또 갱신한 뒤 완료처리한 상태에서 T1을 롤백하려 하면 T2이 처리한 부분에 대해서는 롤백이 불가능하게 됩니다.  
+
 ## Transaction Schedule이란?
 트랜잭션들이 연산을 실행하는 순서를 의미합니다.  
 스케줄의 개수는 `Interleaving(트랜잭션을 쪼개서 수행하는 것)`이 가능한 경우 거의 무한대이고, 허용되지 않으면 $n!$ 개 입니다.  
@@ -41,6 +51,7 @@
 병행 수행의 문제가 발생하지 않으나, 병행 트랜잭션으로 실행되지 않게 됩니다.  
 ### 비직렬 스케줄(non-serial Schedule)
 스케줄에 포함된 모든 트랜잭션이 서로 interleaved되는 스케줄을 의미합니다.  
+같은 트랜잭션 내 작업이라도 쪼개서 수행될 수 있기 때문에 쪼개진 작업이 실행되는 시점에 따라 잘못된 결과를 얻을 수 있습니다.
 #### 직렬 가능 스케줄(serializable Schedule)
 어떤 직렬 스케줄과 **동등**한 비직렬 스케줄을 의미합니다.  
 **모든 충돌 직렬 가능 스케줄**은 **뷰 직렬 가능 스케줄**이지만, ***역은 성립하지 않습니다***.  
@@ -78,7 +89,6 @@ row, table, database 등 Locking할 자원의 크기를 말합니다.
 | 구 분 | Request S-lock | Request X-lock |
 | S-locked data item | ok | not ok |
 | X-locked data item | not ok | not ok |
-|  |  |  |
 ## Locking Protocol
 아래 설명된 Protocol들 이외에도 기본적인 Locking Protocol은 다음과 같습니다.
 - 트랜잭션 T가 x에 대해 read(x)/write(x) 연산을 하려면 먼저 lock(x) 연산을 실행해야 한다.
@@ -87,9 +97,11 @@ row, table, database 등 Locking할 자원의 크기를 말합니다.
 - 트랜잭션 T는 *자신이 lock을 걸지않은 x*에 대해 **unlock(x)** 을 **실행할 수 없다**.
 ### `Shared Locking Protocol(공용 로킹 규약)`
 - 트랜잭션 T는 **read(x)** 전 반드시 <mark style="background: #ADCCFFA6;">lock-S(x)</mark> 또는 <mark style="background: #FFB86CA6;">lock-X(x)</mark>를 실행해야 함.
-- 트랜잭션 T는 **write(x)** 전 반드시 <mark style="background: #FFB86CA6;">lock-X(x)</mark>를 실행해야 함.
+- 트랜잭션 T는 **write(x)** 전 반드시 <mark style="background: #FFB86CA6;">lock-X(x)</mark>를 실행해야 함.  
+
 이러한 규약 때문에 공용 로킹 규약은 **`직렬가능성(serializability)`** 을 보장하지 못합니다.
 - **`직렬가능성(serializability)`** : 비직렬 스케줄을 직렬 스케줄로 변환할 수 있는지를 의미합니다.
+  - lock과 unlock이 병렬로 수행될 수 있으므로 병행 처리되는 트랜잭션들이 서로 간섭할 수 있어 직렬 가능성이 보장되지 않습니다.
 ### `2PLP(2-Phase Locking Protocol, 2단계 로킹 규약)`
 lock만 가능한 Phase와 unlock만 가능한 phase를 나누어 로킹을 수행하는 규약입니다.  
 `직렬가능성`을 **보장**하지만, **`Deadlock`** 문제가 존재하는 규약입니다.  
@@ -98,31 +110,36 @@ lock만 가능한 Phase와 unlock만 가능한 phase를 나누어 로킹을 수�
 - 트랜잭션은 계속해 lock을 획득할 수 있으나, unlock 연산은 실행할 수 없습니다.
 #### 2 단계(Shrink Phase)
 - unlock 연산만 실행할 수 있으며, 일단 Lock을 해제하면 더 이상 lock을 획득할 수 없습니다.
-##### Strict 2PLP(엄밀 2단계 로킹 규약)
+##### Strict 2PLP(엄격 2단계 로킹 규약)
 - 2PLP에 '모든 **X-lock**은 *트랜잭션 완료시까지* **unlock 할 수 없다**'는 규칙이 추가된 형태입니다.
 - **구현이 어려우나 성능이 높고**, **`연쇄 복귀 문제(Cascading Rollback)`** 가 발생하지 않습니다.
-##### Rigorous 2PLP(엄격 2단계 로킹 규약)
+##### Rigorous 2PLP(엄밀 2단계 로킹 규약)
 - 2PLP에 '모든 **lock**은 *트랜잭션 완료시까지* **unlock 할 수 없다**'는 규칙이 추가된 형태입니다.
 - **구현은 쉬우나 성능이 낮다**는 단점이 있습니다.
 ### `Multiple Granularity Locking Protocol(다중 단위 로킹 규약)`
 병행성 수준을 감소시키지 않기 위해, 필요 이상의 크기로 locking 하지 않는 방법입니다.
 - 로킹 계층 트리 : DB -> 구역(Area) -> 파일(File) -> 레코드(Record)
 ![Multi-Granularity-tree-Hiererchy.png](Multi-Granularity-tree-Hiererchy.png)
+
+- DB: 모든 파일을 포함하는 데이터베이스입니다. 데이터베이스는 여러 파일로 구성됩니다.
+- 구역(Area): 파일들로 이뤄진 데이터베이스 내 특정 영역입니다.
+- 파일(File): 관련된 레코드들의 그룹입니다.
+- 레코드(Record): DB 테이블에서 하나의 행입니다. 레코드는 여러 필드로 구성됩니다.
 # Optimistic Lock/Pessimistic Lock에 대해 설명해 주세요.
 ## 낙관적 로크(Optimistic Lock)
 다른 트랜잭션과 충돌하지 않는다고 가정하고, 별도의 Locking 없이 자원에 접근하는 것을 말합니다.  
 병행 제어를 위해 아래 세 과정을 수행하며, 각 과정마다 Start(T), Validation(T), Finish(T) 세 가지의 **`타임스탬프`** 를 사용합니다.
 - **`타임스탬프`** : 시스템에서 **트랜잭션**을 **유일하게 식별**하기 위해 부여한 **식별자(identifier)** 로, 트랜잭션이 **시스템에 들어온 순서대로** 부여합니다.
 ### 과정
-1. 자원에 대해 Lock을 겁니다.
-2. 트랜잭션을 실행합니다.
-3. 자원에 대해 Unlock을 수행합니다.
-## 비관적 로크(Pessimistic Lock)
-다른 트랜잭션과 충돌한다고 가정하고, 트랜잭션을 처리하기 전에 자원에 대해 Locking을 시도하는것을 말합니다.
-### 과정
 1. `판독 단계(Read Step)` : 트랜잭션에 필요한 자료를 DB로 부터 읽어 **Local Working Area에 복사**합니다. 이후 **모든 갱신은 사본을 대상**으로 수행합니다.
 2. `확인 단계(Validation Step)`: **직렬(Serialization) 가능성 위반 여부**를 **검사**합니다.
 3. `기록 단계(Write Step)`: 확인 단계를 통과하면 **DB에 반영**하고, *통과하지 못했다면 실행 결과는 취소*하고 트랜잭션은 복귀합니다.
+## 비관적 로크(Pessimistic Lock)
+다른 트랜잭션과 충돌한다고 가정하고, 트랜잭션을 처리하기 전에 자원에 대해 Locking을 시도하는것을 말합니다.
+### 과정
+1. 자원에 대해 Lock을 겁니다.
+2. 트랜잭션을 실행합니다.
+3. 자원에 대해 Unlock을 수행합니다.
 # 물리적인 Lock을 건 상황에서 트랜잭션이 비정상 종료된 경우 Lock을 해제할 해결책이 있는가? 없다면 직접 해결 가능한가?
 잘 설계된 DBMS에서는 Lock이 오랫동안 유지되어 Deadlock과 같은 상황을 발생시키지 않도록 여러 대비책을 갖고 있으며, 대부분의 DBMS에서는 Lock 관리를 위한 기능을 제공합니다.
 ## Lock Timeout
@@ -168,3 +185,4 @@ current page table은 write 연산을 실행할 때 변경하며, shadow page ta
 - [Reference: Physical Locks (Magic xpa 3.x) - Salesforce](https://magicsoftware.my.salesforce-sites.com/PublicKnowledge/articles/bl_Reference/Physical-Locks-xpa-3x)
 - [Multiple Granularity Locking in DBMS - GeeksforGeeks](https://www.geeksforgeeks.org/multiple-granularity-locking-in-dbms/)
 - [MySQL :: MySQL 8.0 Reference Manual :: 17.7.1 InnoDB Locking](https://dev.mysql.com/doc/refman/8.0/en/innodb-locking.html)
+- [6 Database Management - University of Missouri–St. Louis](https://www.umsl.edu/~joshik/msis480/chapt06.htm)
