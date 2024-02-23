@@ -32,7 +32,6 @@ public @interface RestControllerAdvice {
 } 
 ```
 
-
 ## @ExceptionHandler
 > - AOP를 이용한 예외처리 방식
 > - 메소드에 선언해 예외 처리를 하려는 클래스를 지정하면, 예외 발생 시 정의된 로직에 의해 처리된다.
