@@ -41,6 +41,9 @@
 > - AMQP 프로토콜을 구현한 Message Broker
 > - AMQP : Advanced Message Queuing Protocol
 >   - 클라이언트가 메시지 브로커와 통신할 수 있게 해주는 메시지 프로토콜
+>   - Exchange : Producer로부터 수신한 메시지를 큐에 분배하는 라우터의 역할
+>   - Queue : 메시지를 메모리나 디스크에 저장했다가 Consumer에 메시지를 전달하는 방식
+>   - Binding : Exchange와 Queue를 연결하는 것
 > - 전통적인 Message Queue 방식
 > - ![img_1.png](img_1.png)
 > - ![img_5.png](img_5.png)
@@ -60,6 +63,10 @@
 > - ![img_2.png](img_2.png)
 > - 실시간 스트림 처리를 위한 Stream API 및 다양한 데이터의 손쉬운 통합을 위한 Connector API 제공
 
+### Kafka Cluster
+> - kafka 본체
+> - 여러 Broker가 모인 것
+
 ### Broker
 > - kafka 클러스터는 각각의 kafka server들로 이루어졌고 각각의 `kafka server`를 Broker라고 한다.
 
@@ -74,6 +81,8 @@
 
 ### Zookeeper
 > - Kafka Cluster에서 분산 메시지 큐의 정보를 관리해주는 역할
+> - 분산 어플리케이션을 사용하기 위해선 분산 어플리케이션 관리를 위한 안정적인 코디네이션 어플리케이션이 필요하게 됨
+>   - 각각의 브로커들의 정보를 관리하고, 브로커들 간의 정보를 동기화하는 역할
 > - Broker를 관리(Broker 들의 목록/설정을 관리, `분산처리`)하는 소프트웨어
 > ![img_6.png](img_6.png)
 > - Zookeeper를 사용하여 멀티 Kafka Broker들 간의 정보(변경 사항 포함) 공유, 동기화 등을 수행한다.
@@ -83,6 +92,38 @@
 > 2. 지정된 topic 내 partition에 데이터를 저장한다.
 > 3. 설정된 replication값에 따라 또 다른 topic 내 partition에 복제를 위한 메시지를 저장한다.
 > 4. Consumer Group 안에 있는 어느 하나의 Consumer가 수신하고 메시지 처리를 수행한다.
+
+### kafka & zookeeper 실행
+```yaml
+version: '3.8'
+services:
+  zookeeper:
+    image: zookeeper:3.5
+    ports:
+      - "2181:2181"
+    environment:
+      ZOO_MY_ID: 1
+      ZOO_PORT: 2181
+      ZOO_SERVERS: server.1=zookeeper:2888:3888;2181
+    restart: unless-stopped
+
+  kafka:
+    image: wurstmeister/kafka
+    ports:
+      - "9092:9092"
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_LISTENERS: PLAINTEXT://:9092
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://39.116.209.82:9092
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT
+      KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
+    depends_on:
+      - zookeeper
+    restart: unless-stopped
+
+```
+
 
 ## Message Queue를 이용한 MSA 마이크로 서비스간 통신
 ### Producer Service
