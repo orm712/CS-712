@@ -84,7 +84,7 @@
 > - 분산 어플리케이션을 사용하기 위해선 분산 어플리케이션 관리를 위한 안정적인 코디네이션 어플리케이션이 필요하게 됨
 >   - 각각의 브로커들의 정보를 관리하고, 브로커들 간의 정보를 동기화하는 역할
 > - Broker를 관리(Broker 들의 목록/설정을 관리, `분산처리`)하는 소프트웨어
-> ![img_6.png](img_6.png)
+> - ![img_6.png](img_6.png)
 > - Zookeeper를 사용하여 멀티 Kafka Broker들 간의 정보(변경 사항 포함) 공유, 동기화 등을 수행한다.
 
 ### kafka 동작 순서
@@ -180,8 +180,8 @@ public class KafkaConsumerService {
 
 ## RabbitMQ vs Kafka
 ### 1. 동작 아키텍처
-> - Kafka : Consumer -> broker -> partition -> producer
-> - RabbitMQ : Consumer -> Exchange -> binding rules -> queue -> producer
+> - Kafka : Producer -> broker -> partition -> Consumer
+> - RabbitMQ : Producer -> Exchange -> binding rules -> queue -> Consumer
 
 ### 2. 성능
 > - Kafka : 순차적인 disk I/O 방식을 통해 성능 향상. 적은 비용으로 많은 데이터 유지, 1초에 수백만개의 메세지 처리 가능
