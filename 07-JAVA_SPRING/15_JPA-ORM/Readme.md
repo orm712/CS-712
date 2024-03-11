@@ -77,7 +77,7 @@
 
 #### 쓰기 지연
 ```java
-/** 1. 트랜잭션을 커밋할 때까지 INSERT SQL을 모음 */
+/** 1. 트랜잭션을 커밋할 때까지 INSERT SQL을 모음 */  
 
 transaction.begin(); // [트랜잭션] 시작
 
