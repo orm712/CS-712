@@ -16,7 +16,7 @@
 >   - `.sum()`, `.average()` 등의 메소드를 사용할 수 있다.
 
 ## Stream 사용 절차
-### 1. 스트림 만들기
+### 1. 스트림 만들기 
 - 배열 스트림 : Arrays.stream()
 ```java
 String[] arr = new String[]{"a", "b", "c"};
