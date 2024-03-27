@@ -31,18 +31,19 @@ ISR에 진입시 interrupt mask bit을 자동으로 설정함
 #### Hardware interrupt(external interrupt)
 
 - 주변기기나 하드웨어에서 발생한 이벤트에 의해 발생하는 interrupt
+
   > External interrupt
   >
   > 1.  전원이상
   > 2.  I/O interrupt
   > 3.  timmer interrupt
 
-> Internal interrupt
->
-> 1.  program check interrupt
->     <br> &emsp; - Division by zero
->     <br> &emsp; - Overflow, Underflow
->     <br> &emsp; - 부당한 기억장소 참조
+  > Internal interrupt
+  >
+  > 1.  program check interrupt
+  >     <br> &emsp; - Division by zero
+  >     <br> &emsp; - Overflow, Underflow
+  >     <br> &emsp; - 부당한 기억장소 참조
 
 #### Software interrupt(internal interrupt)
 
