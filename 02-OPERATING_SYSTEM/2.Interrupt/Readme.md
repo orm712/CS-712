@@ -78,7 +78,9 @@ Parallel 우선순위 부여 방식
 > - 반대로 우선순위가 높은 인터럽트는 낮은 인터럽트 수행 중에도 우선 처리된다.
 
 https://justzino.tistory.com/4
+
 http://www.jidum.com/jidums/view.do?jidumId=445
 
 https://www.devx.com/terms/internal-interrupt/
+
 https://www.devx.com/terms/external-interrupt/
