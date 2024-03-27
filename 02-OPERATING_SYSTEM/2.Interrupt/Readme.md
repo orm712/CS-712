@@ -1,10 +1,8 @@
-Polling 방식에 대해 설명해 주세요.<br>
-HW / SW 인터럽트에 대해 설명해 주세요.<br>
-동시에 두 개 이상의 인터럽트가 발생하면, 어떻게 처리해야 하나요?<br>
-
 # Interrupt
 
 ### 인터럽트는 어떻게 처리하나요?
+
+<img src="./img01.png" width="70%">
 
 interrupt 발생시
 
@@ -25,12 +23,32 @@ ISR에 진입시 interrupt mask bit을 자동으로 설정함
 
 ### polling
 
-https://techdifferences.com/difference-between-interrupt-and-polling-in-os.html
+> 하드웨어 장치의 상태를 수시로 체크하여 명령을 받을 수 있는지 확인하는 방법
+> CPU가 주기적으로 servicing이 필요한지 길다리고 체크해야하기 때문에 CPU 사이클을 낭비한다
 
-https://seonggyu.tistory.com/26
+### HW / SW Interrupt
 
-interrupt enable filp-flop
-interrupt enable flag
+#### Hardware interrupt(external interrupt)
+
+- 주변기기나 하드웨어에서 발생한 이벤트에 의해 발생하는 interrupt
+  > External interrupt
+  >
+  > 1.  전원이상
+  > 2.  I/O interrupt
+  > 3.  timmer interrupt
+
+> Internal interrupt
+>
+> 1.  program check interrupt
+>     <br> &emsp; - Division by zero
+>     <br> &emsp; - Overflow, Underflow
+>     <br> &emsp; - 부당한 기억장소 참조
+
+#### Software interrupt(internal interrupt)
+
+- OS에서 제공하는 서비스를 어플리케이션에서 호출할 떄 발생
+  > 1. SVC(SuperVisor Call)
+  >    <br>&emsp; - System call
 
 ### 동시에 두 개 이상의 인터럽트가 발생하면, 어떻게 처리해야 하나요?
 
@@ -57,3 +75,9 @@ Parallel 우선순위 부여 방식
 > - 각 장치별 우선순위를 판별하기 위한 Mask register에 bit를 설정한다.<br>
 > - Mask register상 우선순위가 높은 서비스 루틴 수행중 우선순위가 낮은 bit들을 비활성화 시킬 수 있다.<br>
 > - 반대로 우선순위가 높은 인터럽트는 낮은 인터럽트 수행 중에도 우선 처리된다.
+
+https://justzino.tistory.com/4
+http://www.jidum.com/jidums/view.do?jidumId=445
+
+https://www.devx.com/terms/internal-interrupt/
+https://www.devx.com/terms/external-interrupt/
