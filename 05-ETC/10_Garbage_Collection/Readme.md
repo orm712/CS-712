@@ -107,6 +107,49 @@
 >
 > 따라서 GC는 heap 영역 안의 데이터를 관리한다
 
+### Reference Counting 방식에 대해 설명하고, 이 알고리즘에서 발생할 수 있는 순환 참조 및 Retain Cycle에 대해 설명해 주세요.
+
+---
+
+#### 참조 횟수 계산 방식(Reference Counting)
+
+> 객체에 참조값을 넣어 참조되면 1 증가 참조하지 않게되면 1 감소하여 0이되면 유효한 객체로 보지 않아 제거하는 방식이다
+
+매번 참조할 때마다 참조값을 검사해야함으로 많은 수의 객체를 사용하게 되면 검사에 대한 부하가 커진다
+
+---
+
+#### 순환참조(Circular Reference)
+
+<img src="./circular_reference.png">
+
+둘 혹은 그 이상의 객체가 서로를 참조하는 상황
+
+---
+
+#### Retain Cycle
+
+<img src="./retain_cycle01.png" width="50%">
+
+A를 참조하는 a,b 인스턴스의 some이 아래와 같이 있다.
+
+```
+a.some = b
+b.some = a
+```
+
+<img src="./retain_cycle02.png" width="50%">
+
+인스턴스들의 null이 된다면 아래의 some끼리 연결되어 있는 것은 영원히 해제되지 않고 남아 메모리 누수(memory leak)를 발생시킨다
+
+> 강한 참조로 인해 메모리가 해제되지 않고 유지되어 메모리 누수가 발생하는 현상
+
+Retain
+
+클래스와 같이 추상화된 것으로 부터 객체를 만들어내는 것
+
+---
+
 GC의 기본 Algorithm
 
 Reference Counting Algorithm<br>
@@ -115,19 +158,7 @@ Mark-and-Compact Algorithm<br>
 Copying Algorithm<br>
 Generational Algorithm<br>
 
-### Reference Counting 방식에 대해 설명하고, 이 알고리즘에서 발생할 수 있는 순환 참조 및 Retain Cycle에 대해 설명해 주세요.
-
-#### 참조 횟수 계산 방식(Reference Counting)
-
-> 객체에 참조값을 넣어 참조되면 1 증가 참조하지 않게되면 1 감소하여 0이되면 유효한 객체로 보지 않아 제거하는 방식이다
-
-매번 참조할 때마다 참조값을 검사해야함으로 많은 수의 객체를 사용하게 되면 검사에 대한 부하가 커진다
-
-Retain
-
-TOG401EVENT
-
-클래스와 같이 추상화된 것으로 부터 객체를 만들어내는 것
+---
 
 https://www.oracle.com/webfolder/technetwork/tutorials/obe/java/gc01/index.html
 
