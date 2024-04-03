@@ -11,11 +11,11 @@
 ### Mutual Exclusion (상호 배제)
 > - 공유 자원에 하나의 Thread만 접근할 수 있도록 세마포어/뮤텍스로 `락`을 통제하는 방법
 >   - 뮤텍스
->     - 공유 자원 접근을 한 시점에 단 하나의 쓰레드만 하도록 허용
+>     - 공유 자원 접근을 한 시점에 단 `하나`의 쓰레드만 하도록 허용
 >     - `Lock`과 `Unlock`으로 구성
 >     - `Lock`을 획득한 스레드만 `Unlock`을 할 수 있다.
 >   - 세마포어
->     - 제한된 수의 쓰레드가 동시에 공유 자원에 접근할 수 있도록 허용
+>     - `제한된 수의 쓰레드`가 동시에 공유 자원에 접근할 수 있도록 허용
 >     - 세마포어의 값은 동시에 자원에 접근할 수 있는 쓰레드의 최대 개수
 > - 일반적으로 많이 사용
 
@@ -53,13 +53,13 @@
 
 #### 모니터
 > - 세마포어의 가장 큰 문제는 잘못된 사용으로 인해 임계구역이 보호받지 못하는 것
-> - ![img_2.png](img_2.png)
 > - 구성을 잘못한 경우
+> - ![img_2.png](img_2.png)
 > - 공유자원을 사용할 때 모든 프로세스가 세마포어 알고리즘을 따른다면 굳이 wait나 signal할 필요가 없다.
 >   - 모니터
-> - 공유 자원을 내부적으로 숨기고 공유 자원에 접근하기 위해 인터페이스만 제공함으로써 자원을 보호하고 프로세스 간에 동기화를 시킨다.
+> - 공유 자원을 내부적으로 숨기고(캡슐화) 공유 자원에 접근하기 위해 인터페이스만 제공함으로써 자원을 보호하고 프로세스 간에 동기화를 시킨다.
 > - ![img_3.png](img_3.png)
-> - synchronized
+> - java의 synchronized
 
 
 ### Atomic Operation (원자 연산)
@@ -84,7 +84,7 @@
 - java.util.concurrent 패키지 하위 클래스를 사용한다.
   - Lock 인터페이스, ConcurrentHashMap 등
 - 인스턴스 변수를 두지 않는다.
-- Singleton 패턴을 사용한다.
+- *Singleton 패턴을 사용한다.
 - synchronized 블럭에서 연산을 수행한다.
 
 ### 일반적으로 구현되는 Singleton은 Thread-Safe하지 않다.
@@ -99,7 +99,6 @@
 ```java
 public class SharedStateSingleton {
     private static SharedStateSingleton instance = new SharedStateSingleton();
-    private int sharedCounter = 0;
 
     private SharedStateSingleton() {
     }
@@ -109,14 +108,6 @@ public class SharedStateSingleton {
             instance = new SingletonExample();
         }
         return instance;
-    }
-
-    public void incrementCounter() {
-        sharedCounter++;
-    }
-
-    public int getCounter() {
-        return sharedCounter;
     }
 }
 ```
@@ -176,4 +167,4 @@ public class SharedStateSingleton {
 
 ## Race Condition이 무엇인가요?
 > - 두 개 이상의 쓰레드나 프로세스가 공통 자원을 병행적으로 읽거나 쓰는 동작을 할 때, 공용 데이터에 대한 접근이 어떤 순서에 따라 이루어졌는지에 따라 그 실행 결과가 같지 않고 달라지는 상황
-> - Race Condition을 발생시킬 수 있는 코드 블록을 임계 구역이라고 한다.
+> - Race Condition을 발생시킬 수 있는 코드 블록을 임계 구역(critical section)이라고 한다.
