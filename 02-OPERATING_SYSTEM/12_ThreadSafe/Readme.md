@@ -22,7 +22,7 @@
 #### 세마포어
 > - 동시에 공유자원에 접근할 수 있는 쓰레드 수를 제한
 > - 내부적으로 정수 카운터를 가지고 있으며, 이 카운터를 통해 동시에 접근할 수 있는 쓰레드 최대 수를 제한
-> - critical section에 진입하기 전에 세마포어를 획득하고, critical section을 빠져나올 때 세마포어를 해제
+> - `critical section`(임계 구역)에 진입하기 전에 세마포어를 획득하고, critical section을 빠져나올 때 세마포어를 해제
 > - Binary Semaphore
 >   - 뮤텍스와 유사하게 작동
 >   - 0 또는 1의 값을 가지며, 0일 때는 Lock, 1일 때는 Unlock
@@ -50,6 +50,8 @@
 > - wait(mutex) : 임계구역 진입 전에 호출
 >   - wait을 하면 공유자원 mutex를 감소시키고, signal하면 mutex를 증가시키고 block 상태에 있는 프로세스를 뮤텍스 큐에서 깨워 ready queue로 보낸다.
 > - 뮤텍스와 세마포어 모두 3가지 임계구역 조건인 mutual exclusion, bounded waiting, progress를 지키며, busy waiting을 하지 않은 효율적인 알고리즘
+> - https://dev-ahn.tistory.com/18
+> - https://blog.system32.kr/80
 
 #### 모니터
 > - 세마포어의 가장 큰 문제는 잘못된 사용으로 인해 임계구역이 보호받지 못하는 것
@@ -83,6 +85,7 @@
 ## Java에 Thread-Safe하게 설계하기
 - java.util.concurrent 패키지 하위 클래스를 사용한다.
   - Lock 인터페이스, ConcurrentHashMap 등
+  - https://velog.io/@wlstjdwkd/JAVA-%EB%8F%99%EC%8B%9C%EC%84%B1-%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D-Lock
 - 인스턴스 변수를 두지 않는다.
 - *Singleton 패턴을 사용한다.
 - synchronized 블럭에서 연산을 수행한다.
@@ -164,6 +167,8 @@ public class SharedStateSingleton {
 >   - 외부 클래스 로드되고 초기화될 때, 내부 정적 클래스는 초기화되지 않는다.
 >   - getInstance()메서드가 호출될 때까지 로드되거나 초기화되지 않는다.
 >   - 또한, 내부 클래스는 외부 클래스가 로드되고 초기화될 때 자동으로 로드되거나 초기화되지 않는다.
+> - 애초에 외부 클래스는 static 선언이 되지 않는다.
+>   - 내부 클래스로 쓰자
 
 ## Race Condition이 무엇인가요?
 > - 두 개 이상의 쓰레드나 프로세스가 공통 자원을 병행적으로 읽거나 쓰는 동작을 할 때, 공용 데이터에 대한 접근이 어떤 순서에 따라 이루어졌는지에 따라 그 실행 결과가 같지 않고 달라지는 상황
