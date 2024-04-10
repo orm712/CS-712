@@ -30,3 +30,7 @@
 > Page Fault Rate가 일정 수준 이상으로 발생하면 메모리를 더 할당하고 일정 이하가되면 메모리를 회수한다
 
 <img src="./PFF.png">
+
+https://rannnneey.tistory.com/entry/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C-Virtual-Memory-6-Working-Set
+
+https://deep-learning-challenge.tistory.com/21
