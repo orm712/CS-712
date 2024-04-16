@@ -23,11 +23,11 @@
 
 <br>
 
-<img src="img01.png" width="50%">
+<img src="./img01.png" width="40%">
 
 패킷의 순서를 모르기 떄문에 생기는 문제
 
-<img src="img02.png" width="50%">
+<img src="./img02.png" width="40%">
 
 한쪽만 연결되어있는 문제
 
