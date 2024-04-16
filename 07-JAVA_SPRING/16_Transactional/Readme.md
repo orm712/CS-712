@@ -88,7 +88,7 @@ public class AccountService {
 >   - UnCheckedException(RuntimeException)이 발생하면 Rollback
 
 ### AOP(Aspect Oriented Programming)
-> - [AOP](07-JAVA_SPRING/12_AOP/Readme.md)
+> - [AOP](..%2F12_AOP%2FReadme.md)
 > - 흩어진 Aspect를 모듈화하여 `횡단 관심사`를 분리하여 모듈화하는 프로그래밍 기법
 ![img_1.png](img_1.png)
 
