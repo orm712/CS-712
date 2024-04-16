@@ -1,5 +1,9 @@
 # 3-Way Handshake
 
+<img src="./3-way-handshake.png" width="70%">
+
+---
+
 ### ACK, SYN 같은 정보는 어떻게 전달하는 것 일까요?
 
 <img src="./TCP_header.PNG">
@@ -27,11 +31,19 @@
 
 한쪽만 연결되어있는 문제
 
+https://hojunking.tistory.com/106
+
 ---
 
 ### 두 호스트가 동시에 연결을 시도하면, 연결이 가능한가요? 가능하다면 어떻게 통신 연결을 수행하나요?
 
 <img src="./SYN Flooding.PNG" width="60%">
+
+각자 서로 SYN Segment를 보낸다
+
+SYN Segment를 받으면 ACK Segment를 보낸다
+
+ACK Segment가 도착하면 각자 Established 된다.
 
 ---
 
@@ -42,3 +54,18 @@
 ---
 
 ### 위 질문과 모순될 수 있지만, 3-Way Handshake의 속도 문제 때문에 이동 수를 줄이는 0-RTT 기법을 많이 적용하고 있습니다. 어떤 방식으로 가능한 걸까요?
+
+QUIC 프로토콜
+
+> TCP 기반의 통신은 Connection 수립을 위해 SYN 송신, SYN-ACK 송신, ACK 송신 과정을 거치지만
+>
+> QUIC는 UDP 기반의 통신이기 때문에 기본적으로 0-RTT가 원칙이다
+
+> Connection UID라는 고유한 패킷 식별자를 사용하기에 한번이라도 클라이언트 서버가 데이터 전송을 수행했다면 로밍이 발생하거나 IP가 바뀌어도 Connect을 다시 설정할 필요가 없다
+
+<img src="./zero-RTT.png" width="50%">
+
+```
+문제점으론 보안 문제
+전체를 탈취당했을 때 암호 해독은 불가할지라도 같은 결과를 내게 만들수 있다.
+```
