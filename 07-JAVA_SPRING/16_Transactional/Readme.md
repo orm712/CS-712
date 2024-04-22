@@ -1,4 +1,4 @@
-# Transactional 은 어떤 기능을 하나요?
+# @Transactional 은 어떤 기능을 하나요?
 ## 트랜잭션이란?
 > 데이터베이스 트랜잭션은 데이터베이스 관리 시스템(DBMS)에서 데이터베이스 `상태를 변화`시키는 하나 이상의 작업을 `모아 놓은 것`이다.
 > </br>트랜잭션은 데이터베이스의 `무결성`을 보장하기 위해 사용된다
@@ -88,7 +88,7 @@ public class AccountService {
 >   - UnCheckedException(RuntimeException)이 발생하면 Rollback
 
 ### AOP(Aspect Oriented Programming)
-> - [AOP](07-JAVA_SPRING/12_AOP/Readme.md)
+> - [AOP](..%2F12_AOP%2FReadme.md)
 > - 흩어진 Aspect를 모듈화하여 `횡단 관심사`를 분리하여 모듈화하는 프로그래밍 기법
 ![img_1.png](img_1.png)
 
