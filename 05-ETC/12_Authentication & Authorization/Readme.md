@@ -161,3 +161,5 @@ ABAC
 10~13 Access Token으로 리소스 접근
 
 https://baek.dev/post/24/
+
+https://hudi.blog/oauth-2.0/
