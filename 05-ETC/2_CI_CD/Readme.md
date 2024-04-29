@@ -44,3 +44,25 @@
 > 5. Jenkins에서 production 브랜치의 웹훅을 통해 코드 변경이 감지되고, 빌드와 테스트를 진행한다.
 >   - ![img_3.png](img_3.png)
 > 6. 성공했다면, Jenkins의 쉘 스크립트에서 `docker-compose up -d '백엔드 서버'`명령어를 통해 해당 백엔드 서버를 클라우드 환경에 docker 컨테이너로 백그라운드에서 실행되게 한다.
+```shell
+cd backend/auth
+
+chmod +x gradlew
+./gradlew clean build
+
+echo $DOCKER_HUB_PASSWORD | docker login --username $DOCKER_HUB_USERNAME --password-stdin
+
+cp $ENV_FILE ./.env
+
+docker-compose build
+docker-compose push auth-service
+docker-compose pull auth-service
+docker-compose up -d auth-service
+
+docker image prune -f
+
+#docker build -t auth-server .
+#docker stop auth-container || true
+#docker rm auth-container || true
+#docker run -d --name auth-container -p 8100:8100 -e ENCRYPT_KEY=${ENCRYPT_KEY} auth-server
+```
