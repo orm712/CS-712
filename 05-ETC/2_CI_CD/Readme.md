@@ -14,7 +14,7 @@
 
 ![img.png](img.png)
 
-### CI/CD 종류
+### CI/CD Tool 종류
 > - Jenkins
 > - Github Actions
 > - etc
@@ -33,7 +33,7 @@
 > 4. master 브랜치에 코드를 merge하고 Build, Test가 정상적으로 수행이 되었다면 CI서버에서 알아서 Deploy 과정을 수행한다.
 
 ## Jenkins를 이용해 배포해본적이 있다고 하는데, 깃허브에 올릴 때부터 클라우드 환경에서 서버가 실행될 때까지의 과정을 아는데로 설명해달라.
-> 1. 먼저, MSA의 각 서버별로 production 브랜치를 나누고, 그 production 브랜치에서 feature 브랜치들로 기능 개발 브랜치를 나눈다.
+> 1. 먼저, MSA의 각 서버별로 production 브랜치를 나누고, 그 production 브랜치에서 feature 브랜치들로 기능 개발 브랜치를 나눈다.(실무에서는 Prod 서버, Dev 서버, Test 서버, Staging 서버 등 다양한 형태로 나눠지나, 간소화하여 prod 서버와 dev 서버로 설명하겠다.)
 >    - ![img_2.png](img_2.png)
 > 2. 또한, 각 서버들은 docker 컨테이너에서 운영되게 하기 위해서 각 브랜치의 root 경로에 Dockerfile을 작성한다.
 >    - [Dockerfile](Dockerfile)
