@@ -38,3 +38,6 @@ services:
 
 networks:
   auth-network:
+
+# docker-compose로 db서버와 백엔드 서버를 자동으로 연결시켜 놨지만
+# 물론 각 서버를 docker로 직접 띄워서 연결할 수도 있다.
