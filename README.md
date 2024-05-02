@@ -2,6 +2,11 @@
 
 ## 참고 깃허브 https://github.com/VSFe/Tech-Interview
 
+## 참여 인원
+|<img src="https://avatars.githubusercontent.com/u/74286424?v=4" width="150" height="150"/>|<img src="https://avatars.githubusercontent.com/u/80333530?v=4" width="150" height="150"/>|<img src="https://avatars.githubusercontent.com/u/77185436?v=4" width="150" height="150"/>|
+|:-:|:-:|:-:|
+|JinSeong-Bang<br/>[@wlstjdwkd](https://github.com/wlstjdwkd)|[@pangmo00](https://github.com/pangmo00)|Kyu-yeong Park<br/>[@cloudsoswift](https://github.com/cloudsoswift)|
+
 ## 진행 사항
 
 |  주차  |                                                                 방진성                                                                 |                                     박규영                                      |                                           김광모                                           |     날짜     |
