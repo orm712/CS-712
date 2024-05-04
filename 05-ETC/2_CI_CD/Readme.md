@@ -50,7 +50,7 @@
 >    - 각 github에서 settings에서 webhook을 들어가 작성하고, Payload URL에는 jenkins 서버의 url과 포트번호/github-webhook/을 기술하면 된다.
 >      - ![img_3.png](img_3.png)
 > 6. 성공했다면, Jenkins의 쉘 스크립트에서 `docker-compose up -d '백엔드 서버'`명령어를 통해 해당 백엔드 서버를 클라우드 환경에 docker 컨테이너로 백그라운드에서 실행되게 한다.
->    - -d라는 인자는 서버가 백그라운드에서 돌아가라고 명시해주는것
+>    - `-d`라는 인자는 서버가 백그라운드에서 돌아가라고 명시해주는것
 >    - 이것을 해놔야 서버를 돌리면서 다른 작업도 할 수 있다.
 
 ### Jenkins Shell Script
