@@ -5,7 +5,7 @@
 2. [참여 인원](#참여-인원)
 3. [Contents](#contents)
 4. [진행 사항](#진행-사항)
-5. [참고 깃허브](#참고-깃허브-httpsgithubcomvsfetech-interview)
+5. [참고 깃허브](#참고-깃허브)
 
 ## 🌳 Rule
 - 스터디는 매주 화요일 진행(유동적 변경 가능)
