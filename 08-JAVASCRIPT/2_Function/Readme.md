@@ -58,7 +58,7 @@ const callback = (a) => a+1;
 // [2]
 
 // array-like 객체에 map 사용
-Array.prototype.map({length: 1, '0': 'abc'}, callback);
+Array.prototype.map.call({length: 1, '0': 'abc'}, callback);
 // [abc1]
 ```
 #### 함수 short-cut 만들기
