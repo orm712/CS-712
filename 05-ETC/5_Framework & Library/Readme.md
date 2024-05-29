@@ -19,6 +19,10 @@
 
 <img src="./img01.png">
 
+`IoC(Inversion of Control)`
+
+> `제어의 역전` Framework로 부터 제어의 흐름을 받는 설계원칙
+
 `[Framework]`Spring
 
 DI(Dependency Injection)
@@ -27,8 +31,6 @@ DI(Dependency Injection)
 
 > 직접 객체를 생성하여 사용하는 것이 아닌 외부에서 필요한 객체를 이식받아서 사용한다<br>
 > setter()가 아닌 생성자로도 사용 가능하다
-
-IoC(Inversion of Control)
 
 Spring IoC Container/Spring Container
 
