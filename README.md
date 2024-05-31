@@ -56,7 +56,7 @@
 | 16주차 |                                         [정규화](04-DATABASE%2F7_Normalization%2FReadme.md)                                         | [인터페이스 vs 추상 클래스](07-JAVA_SPRING/3_Interface-vs-Abstract-Class/Readme.md) |                         [Schema](04-DATABASE/13_Schema/Readme.md)                          | 2024.05.14 |
 | 17주차 |                                        [CSR vs SSR](03-NETWORK%2FCSR%20vs%20SSR%2FReadme.md)                                        |                [Deadlock](02-OPERATING_SYSTEM/9_Deadlock/Readme.md)                 | [Call by value & Call by reference](05-ETC/6_Call-by-value%26Call-by-reference/Readme.md)  | 2024.05.24 |
 | 18주차 |                                    [RDB vs NoSQL](04-DATABASE%2F2_RDB%20vs%20NoSQL%2FReadme.md)                                     |         [Stateless & Connectionless](03-NETWORK/16_Stateless-Connectless/Readme.md)                  |            [Framework & Library](05-ETC/5_Framework%20%26%20Library/Readme.md)             | 2024.05.29 |
-| 19주차 |                                                                        |                           |                     [Pure Function](05-ETC/7_Pure Function/Readme.md)                     | 2024.06.04 |
+| 19주차 |                                                                        |                           |                     [Pure dFunction](05-ETC/7_Pure Function/Readme.md)                     | 2024.06.04 |
 
 [//]: # "지우지 말 것/복사용임"
 [//]: # "| 주차 |                                                                                                  |                                                                                |                                       | 2024.05. |"
