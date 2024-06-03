@@ -23,11 +23,25 @@
   - 함수는 side effect가 없어야하며 외부 상태에 종속되지 않아야 한다
   - 동일한 입력에 대해 동일한 출력을 낸다
   
-    장점
+    `장점`
   - 테스트가 쉬움
   - 코드 유지관리성
   - 동시성 및 병렬성
-  - 
+
+####  명령형 프로그래밍 vs 함수형 프로그래밍
+
+`명령형 프로그래밍`
+- 절차지향 프로그래밍
+- 객체지향 프로그래밍
+
+`함수형 프로그래밍(Functional Programming)`
+
+- side effect
+- pure function
+- First-Class Object
+- Referential Transparency
+- 
+    
 
 ### 순수함수는 Thread Safe 한가요? 왜 그럴까요?
 
@@ -50,6 +64,7 @@
 `functional programming`
 
 - https://ko.wikipedia.org/wiki/%ED%95%A8%EC%88%98%ED%98%95_%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D
+- https://mangkyu.tistory.com/111
 
 `higher order function`
 
