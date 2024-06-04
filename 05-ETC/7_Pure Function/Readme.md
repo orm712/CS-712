@@ -19,14 +19,6 @@
 
 > 자료 처리를 수학적 함수의 계산으로 취급하고 상태와 가변 데이터를 멀리하는 프로그래밍 패러다임
 
-`Pure Fucntion`
-  - 함수는 side effect가 없어야하며 외부 상태에 종속되지 않아야 한다
-  - 동일한 입력에 대해 동일한 출력을 낸다
-  
-    `장점`
-  - 테스트가 쉬움
-  - 코드 유지관리성
-  - 동시성 및 병렬성
 
 ####  명령형 프로그래밍 vs 함수형 프로그래밍
 
@@ -40,8 +32,29 @@
 - pure function
 - First-Class Object
 - Referential Transparency
-- 
-    
+  
+
+> `Pure Fucntion`
+> - 함수는 side effect가 없어야하며 외부 상태에 종속되지 않아야 한다
+> - 동일한 입력에 대해 동일한 출력을 낸다
+>
+>  `장점`
+> - 테스트가 쉬움
+> - 코드 유지관리성
+> - 동시성 및 병렬성
+
+> `First-Class Object`
+> - 다른 객체들에 일반적으로 적용 가능한 연산을 모두 지원하는 객
+> 
+>  `로빈 포플스톤의 일급 객체 정의`
+> - 함수의 실제 매개변수가 될 수 있음
+> - 함수의 반환 값이 될 수 있음
+> - 할당 명령문의 대상이 될 수 있음
+> - 동일 비교의 대상이 될 수 있음
+
+> `Referential Transparency`
+> 
+> 
 
 ### 순수함수는 Thread Safe 한가요? 왜 그럴까요?
 
@@ -50,8 +63,10 @@
 ## 고차함수에 대해 설명해 주세요.
 
 > 함수의 형태로 리턴할 수 있는 함수
+> 
 ---
-`side effect``]
+
+`side effect`
 
 - https://en.wikipedia.org/wiki/Side_effect_(computer_science)
 
@@ -65,6 +80,10 @@
 
 - https://ko.wikipedia.org/wiki/%ED%95%A8%EC%88%98%ED%98%95_%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D
 - https://mangkyu.tistory.com/111
+
+`First-Class Object`
+- https://ko.wikipedia.org/wiki/%EC%9D%BC%EA%B8%89_%EA%B0%9D%EC%B2%B4
+- https://velog.io/@reveloper-1311/%EC%9D%BC%EA%B8%89-%EA%B0%9D%EC%B2%B4First-Class-Object%EB%9E%80
 
 `higher order function`
 
