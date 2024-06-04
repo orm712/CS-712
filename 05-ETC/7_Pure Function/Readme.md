@@ -51,13 +51,32 @@
 > - 함수의 반환 값이 될 수 있음
 > - 할당 명령문의 대상이 될 수 있음
 > - 동일 비교의 대상이 될 수 있음
+> 
+> 이러한 성질로 함수를 Highter order function을 만들 수 있다
 
-> `Referential Transparency`
+> `Referential Transparency(참조 투명성)`
+> - 프로그램 동작의 변경없이 관련 값을 대체할 수 있다면 표현식을 참조 상 투명하다
+> ```
+> val x = "Hello"
+> val r1 = x + " World"
+> val r2 = "Hello" + " World"
+> val r3 = x + " World"
 > 
-> 
+> val x = new StringBuilder("Hello")
+> val r1 = x.append(" World").toString
+> val r2 = x.append(" World"),toString
+> ```
+> 위 코드는 x에 대해 같은 작업을 해도 계속 같은 값을 내지만 아래의 코드는 r2 = "Hello World World"의
+> 결과 값을 가짐으로 참조가 투명하지 않다
 
 ### 순수함수는 Thread Safe 한가요? 왜 그럴까요?
+- 입력에만 의존: 함수의 반환 값이 오직 함수의 입력 인자에만 의존
+- Side Effect 없음: 함수 실행이 외부 상태를 변경하지 않음
 
+> 이러한 특성 때문에 순수 함수는 병렬 처리 환경에서도 안전하게 사용할 수 있다<br> 
+> 여러 스레드가 동시에 순수 함수를 호출하더라도, 각 호출은 독립적이며 서로 간섭하지 않는다<br>
+> 이는 순수 함수가 전역 상태를 변경하지 않기 때문에 가능하며, 
+> 따라서 경쟁 조건(race condition)이나 데이터 경합(data race) 문제가 발생하지 않는다
     
 
 ## 고차함수에 대해 설명해 주세요.
@@ -85,6 +104,9 @@
 - https://ko.wikipedia.org/wiki/%EC%9D%BC%EA%B8%89_%EA%B0%9D%EC%B2%B4
 - https://velog.io/@reveloper-1311/%EC%9D%BC%EA%B8%89-%EA%B0%9D%EC%B2%B4First-Class-Object%EB%9E%80
 
-`higher order function`
+`Referential Transparency`
+- https://ko.wikipedia.org/wiki/%EC%B0%B8%EC%A1%B0_%ED%88%AC%EB%AA%85%EC%84%B1
+- https://dowhateveryouwant.tistory.com/30
 
+`higher order function`
 - https://velog.io/@thyoondev/%EA%B3%A0%EC%B0%A8-%ED%95%A8%EC%88%98higher-order-function%EC%97%90-%EB%8C%80%ED%95%98%EC%97%AC
