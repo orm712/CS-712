@@ -71,7 +71,7 @@ public class UserLombok {
   private String name;
 }
 ```
-### 특정 생성자에만 Builder 적용
+### `특정 생성자에만` Builder 적용
 ```java
 @Getter
 public class UserLombok {
