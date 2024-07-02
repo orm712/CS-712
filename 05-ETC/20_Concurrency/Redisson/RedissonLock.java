@@ -15,6 +15,9 @@ public class RedissonLock {
         //Redisson의 Lock 객체
         RLock lock = redissonClient.getLock(String.format("purchase:book:%d", bookId));
         try {
+            //waitTime : 잠금을 얻기 위해 대기하는 최대 시간
+            //leaseTime : 잠금을 유지할 시간
+            //시간 단위를 초로 하겠다.
             boolean available = lock.tryLock(10, 1, TimeUnit.SECONDS);
             if (!available) {
                 System.out.println("redisson getLock timeout");
