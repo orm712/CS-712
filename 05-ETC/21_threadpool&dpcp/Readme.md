@@ -81,7 +81,7 @@ server:
 
 ## DB max_connections
 > - Client에 `최대 몇개까지의 연결`을 허용할지 의미
-> - max_connections가 80이고, WAS가 4대라면, DB connection을 20개까지 생성할 수 있다.
+> - max_connections(DBMS 설정)가 80이고, WAS가 4대라면, DB connection을 20개까지 생성할 수 있다.
 > - Throughput 고려
 >   - 0.5초동안 Connection을 사용하는 트랜잭션을 초당 1000개 처리하고 싶다면 약 500개정도 되는 DBCP connection이 필요하게 된다.
 
