@@ -1,4 +1,4 @@
-# ThreadPool & DPCP
+# ThreadPool & DBCP
 
 ## Thread
 > - 실행중인 프로그램을 `프로세스`, 그 프로세스의 실행단위가 `쓰레드`
