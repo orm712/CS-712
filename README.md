@@ -63,6 +63,8 @@
 | 23주차 |                                            [동시성 처리](05-ETC%2F20_Concurrency%2FReadme.md)                                            |    [모듈 시스템](08-JAVASCRIPT/4_Module-System/Readme.md)                                                                            |                                                          -                                                           | 2024.07.02 |
 | 24주차 |                                    [ThreadPool&DBCP](05-ETC%2F21_threadpool%26dpcp%2FReadme.md)                                     |       [Prototype in Javascript](08-JAVASCRIPT/5_Prototype/Readme.md)                                                                          |                                                          -                                                           | 2024.07.09 |
 | 25주차 |                                               [HTTP](03-NETWORK%2F4_HTTP%2FReadme.md)                                               |        [Scope in Javascript](08-JAVASCRIPT/6_Scope/Readme.md)                                                                        |                                                          -                                                           | 2024.07.16 |
+| 26주차 |                                                                                                  |                                                                                |                                                          -                                                           | 2024.07.23 |
+
 
 
 [//]: # "지우지 말 것/복사용임"
