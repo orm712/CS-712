@@ -56,7 +56,7 @@ git reset --mixed HEAD~1  # 마지막 커밋을 취소하고 변경 사항을 �
 >   - staging area에서 변경 사항 제거
 > - 커밋 취소하고 변경 사항을 staging area에서 지우고 싶을 때 사용
 
-## --hard
+### --hard
 ```shell
 git reset --hard HEAD~1  # 마지막 커밋과 모든 변경 사항을 완전히 제거
 ```
