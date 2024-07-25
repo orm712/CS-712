@@ -64,6 +64,7 @@
 | 24주차 |                                    [ThreadPool&DBCP](05-ETC%2F21_threadpool%26dpcp%2FReadme.md)                                     |       [Prototype in Javascript](08-JAVASCRIPT/5_Prototype/Readme.md)                                                                          |                                                          -                                                           | 2024.07.09 |
 | 25주차 |                                               [HTTP](03-NETWORK%2F4_HTTP%2FReadme.md)                                               |        [Scope in Javascript](08-JAVASCRIPT/6_Scope/Readme.md)                                                                        |                                                          -                                                           | 2024.07.16 |
 | 26주차 |                              [Context Switching](02-OPERATING_SYSTEM%2F6_ContextSwitching%2FReadme.md)                              |                                                                                |                                                          -                                                           | 2024.07.23 |
+| 27주차 |                                                 [Git](05-ETC%2F16_Git%2FReadme.md)                                                  |                                                                                |                                       | 2024.07.30 |
 
 
 
