@@ -113,6 +113,7 @@ return x;
 | return      | RETURN                  |
 | x           | variable Identifier     |
 | ;           | Semicolon               |
+
 이후, 이들을 기반으로 `추상 구문 트리`를 만들면, 다음과 같습니다.  
 ![ast-example.png](ast-example.png)
 > 트리의 간략화를 위해 토큰 구분은 생략했습니다.
