@@ -65,7 +65,7 @@
 | 25주차 |                                               [HTTP](03-NETWORK%2F4_HTTP%2FReadme.md)                                               |        [Scope in Javascript](08-JAVASCRIPT/6_Scope/Readme.md)                                                                        |                                                          -                                                           | 2024.07.16 |
 | 26주차 |                              [Context Switching](02-OPERATING_SYSTEM%2F6_ContextSwitching%2FReadme.md)                              |            [Module Bundler](08-JAVASCRIPT/7_Module-Bundler/Readme.md)     |                                                          -                                                           | 2024.07.23 |
 | 27주차 |                                                 [Git](05-ETC%2F16_Git%2FReadme.md)                                                  |          [추상 구문 트리(AST)](08-JAVASCRIPT/8_AST/Readme.md)                                                                       |                                                          -                                                           | 2024.07.30 |
-| 28주차 |                       [final](07-JAVA_SPRING%2F2_final%2FReadme.md) & [GC](07-JAVA_SPRING%2F9_GC%2FReadme.md)                       |                                                                                |                 -                      | 2024.08.07 |
+| 28주차 |                       [final](07-JAVA_SPRING%2F2_final%2FReadme.md) & [GC](07-JAVA_SPRING%2F9_GC%2FReadme.md)                       |           [트랜스파일](08-JAVASCRIPT/9_Transpile/Readme.md)                                                                     |                 -                      | 2024.08.07 |
 
 
 
