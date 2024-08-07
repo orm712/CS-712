@@ -44,3 +44,5 @@ obj = null; // MyObject 인스턴스는 여전히 list에 의해 참조됨 -> GC
 *list의 참조 방법*
 > - list가 내부 객체를 참조하는 방법은 heap에 있는 실제 메모리를 참조하게 된다.
 > - 따라서, heap에 있는 실제 객체를 참조 해제 시키더라도 실제 객체의 인스턴스를 가리키기 때문에, list안에서 조회할 수 있게 된다.
+> - ![image](https://github.com/user-attachments/assets/e4caf0aa-fc80-46d4-b81d-fbe2dd38501a)
+
