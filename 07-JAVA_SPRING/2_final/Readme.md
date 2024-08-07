@@ -30,7 +30,7 @@ list.add("World"); // 정상 작동
  final Person person = new Person("사바라다", 29);
 
 
- value = 2; // 컴파일 에러
+ value = 3; // 컴파일 에러
  person.setAge(10); //정상 작동
  person.setName("사바라"); //정상 작동
 
