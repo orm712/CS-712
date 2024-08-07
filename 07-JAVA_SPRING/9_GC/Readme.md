@@ -22,6 +22,9 @@
 > - Java 9부터는 `java.lang.ref.Cleaner` 또는 `java.lang.ref.PhantomReference`가 나왔다.
 >   - finalize()보다 덜 위험하긴 하지만, 여전히 예측할 수 없고, 느리고, 일반적으로 불필요하다.
 
+### 요약
+> 웬만하면 Cleaner, finalize를 사용하지 말자.
+
 ## 어떤 변수의 값이 null이 되었다면, 이 값은 GC가 될 가능성이 있을까요?
 > - 값이 null인 변수는 해당 변수가 참조하던 객체를 더 이상 참조하지 않기 때문에, GC의 대상이 될 수 있다. 
 > - 하지만, 값이 null인 변수가 GC의 대상이 될 수 있는지 여부는 해당 변수를 참조하는 다른 변수나 객체의 `참조 상황에 따라 달라질 수 있다.`
@@ -40,5 +43,3 @@ obj = null; // MyObject 인스턴스는 여전히 list에 의해 참조됨 -> GC
 
 ```
 
-### 요약
-> 웬만하면 Cleaner, finalize를 사용하지 말자.
