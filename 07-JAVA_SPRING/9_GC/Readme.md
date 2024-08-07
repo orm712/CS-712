@@ -40,6 +40,7 @@ List<MyObject> list = new ArrayList<>();
 MyObject obj = new MyObject();
 list.add(obj);
 obj = null; // MyObject 인스턴스는 여전히 list에 의해 참조됨 -> GC 대상 X
-
 ```
-
+*list의 참조 방법*
+> - list가 내부 객체를 참조하는 방법은 heap에 있는 실제 메모리를 참조하게 된다.
+> - 따라서, heap에 있는 실제 메모리를 참조 해제 시키더라도 list안에서 조회할 수 있게 된다.
