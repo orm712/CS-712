@@ -67,6 +67,7 @@
 | 27주차 |                                                 [Git](05-ETC%2F16_Git%2FReadme.md)                                                  |          [추상 구문 트리(AST)](08-JAVASCRIPT/8_AST/Readme.md)                                                                       |                                                          -                                                           | 2024.07.30 |
 | 28주차 |                       [final](07-JAVA_SPRING%2F2_final%2FReadme.md) & [GC](07-JAVA_SPRING%2F9_GC%2FReadme.md)                       |           [트랜스파일](08-JAVASCRIPT/9_Transpile/Readme.md)                                                                     |                 -                      | 2024.08.07 |
 | 29주차 |                          [Multipart & Data binding annotation](07-JAVA_SPRING%2F21_MultiPart%2FReadme.md)                           |       [가상화](05-ETC/1_Virtualization/Readme.md)                                                                         |                 -                      | 2024.08.13 |
+| 30주차 |                                                     |       [Generator](08-JAVASCRIPT/10_Generator/Readme.md)                                                                         |                 -                      | 2024.08.20 |
 
 
 
