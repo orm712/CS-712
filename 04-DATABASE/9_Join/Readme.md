@@ -109,3 +109,17 @@ USING (department_id);
 ### Multi-way Join
 > - 세 개 이상의 테이블을 한 번에 조인하는 것이 아니라, 각 테이블 간의 조인 연산을 단계적으로 수행
 > - 옵티마이저가 다양한 방법을 시도하여 최적의 방법을 선택
+
+### 번외) 3중 조인을 수행할 때 조건절
+```sql
+A JOIN B JOIN C ON (A.id = B.id) AND (B.id = C.id)
+```
+> - 이런식으로 조건절을 뒤에 한번에 몰아쓰면 오류 발생
+> - JOIN을 여러 개 사용할 때, 각 `JOIN`연산마다 별도의 `ON`절을 명시해야 한다.
+
+```sql
+SELECT *
+FROM A
+JOIN B ON A.id = B.id
+JOIN C ON B.id = C.id;
+```
