@@ -54,6 +54,8 @@ spring:
             - Path=/api/v1/auth/**
           filters:
             - StripPrefix=0
+            # - AddRequestHeader=first-request, first-request-header2
+            # - AddResponseHeader=first-response, first-response-header2
         - id: payment-service
           uri: lb://PAYMENT-SERVICE
           predicates:
