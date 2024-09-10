@@ -222,7 +222,7 @@ public class CpuUsageService {
 >   - HTTP API : API 프록시 기능정도만 필요할 때 적합. 단순/저렴
 >   - REST API : API 관리 기능, 요청/응답에 대한 제어가 필요할 경우 적합. 복잡/비쌈
 >   - WebSocket API : 웹소켓 용도. 실시간 어플리케이션에서 사용
-> - AWS CloudWatch, AWS X-Ray를 이요해서 API 호출 경로와 성능, 상태 코드, 트래픽 등을 실시간 모니터링 가능
+> - AWS CloudWatch, AWS X-Ray를 이용해서 API 호출 경로와 성능, 상태 코드, 트래픽 등을 실시간 모니터링 가능
 
 ### CPU 사용량에 따른 라우팅 설정
 > - 직접 지원 X. AWS의 다른 서비스와 결합해야 함
