@@ -79,3 +79,6 @@
 ## 📌참고 깃허브
 
 > https://github.com/VSFe/Tech-Interview
+
+
+[![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Form712%2FCS-712&count_bg=%2333A8B8&title_bg=%23555555&icon=smugmug.svg&icon_color=%23E7E7E7&title=hits&edge_flat=false)](https://hits.seeyoufarm.com)
