@@ -34,6 +34,10 @@
 > - [JAVASCRIPT](08-JAVASCRIPT)
 > - [ETC](05-ETC)
 
+## 📌참고 깃허브
+
+> https://github.com/VSFe/Tech-Interview
+
 <details style="font-size: 24px;">
   <summary><span style="font-size: 24px; font-weight: bold;">🏃‍♀️진행 사항</></summary>
 
@@ -78,10 +82,6 @@
 
 [//]: # "지우지 말 것/복사용임"
 [//]: # "| 주차 |                                                                                                  |                                                                                |                 -                      | 2024.. |"
-
-## 📌참고 깃허브
-
-> https://github.com/VSFe/Tech-Interview
 
 
 [![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Form712%2FCS-712&count_bg=%2333A8B8&title_bg=%23555555&icon=smugmug.svg&icon_color=%23E7E7E7&title=hits&edge_flat=false)](https://hits.seeyoufarm.com)
