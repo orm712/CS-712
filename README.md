@@ -34,7 +34,8 @@
 > - [JAVASCRIPT](08-JAVASCRIPT)
 > - [ETC](05-ETC)
 
-## 🏃‍♀️진행 사항
+<details style="font-size: 24px;">
+  <summary><span style="font-size: 24px; font-weight: bold;">🏃‍♀️진행 사항</></summary>
 
 |  주차  |                                                                 방진성                                                                 |                                       박규영                                        |                                                         김광모                                                          |     날짜     |
 |:----:|:-----------------------------------------------------------------------------------------------------------------------------------:| :---------------------------------------------------------------------------------: |:--------------------------------------------------------------------------------------------------------------------:|:----------:|
@@ -70,7 +71,9 @@
 | 30주차 |                                              [Join](04-DATABASE%2F9_Join%2FReadme.md)                                               |       [Generator](08-JAVASCRIPT/10_Generator/Readme.md)                                                                         |                 -                      | 2024.08.20 |
 | 31주차 |                                       [Transaction](04-DATABASE%2F3_Transaction%2FReadme.md)                                        |   [SQL Injection](04-DATABASE/16_SQL-Injection/Readme.md)                                                                             |                 -                      | 2024.09.04 |
 | 32주차 |                                  [Spring Gateway](07-JAVA_SPRING%2F22_Spring-Gateway%2FReadme.md)                                   |       [async/await](08-JAVASCRIPT/11_async-await/Readme.md)                                                                         |                 -                      | 2024.09.10 |
+| 33주차 |                                   [Dynamic Query](07-JAVA_SPRING%2F23_Dynamic-Query%2FReadme.md)                                    |                                                                                |                 -                      | 2024.09.17 |
 
+</details>
 
 
 [//]: # "지우지 말 것/복사용임"
