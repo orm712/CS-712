@@ -75,7 +75,8 @@
 | 30주차 |                                              [Join](04-DATABASE%2F9_Join%2FReadme.md)                                               |       [Generator](08-JAVASCRIPT/10_Generator/Readme.md)                                                                         |                 -                      | 2024.08.20 |
 | 31주차 |                                       [Transaction](04-DATABASE%2F3_Transaction%2FReadme.md)                                        |   [SQL Injection](04-DATABASE/16_SQL-Injection/Readme.md)                                                                             |                 -                      | 2024.09.04 |
 | 32주차 |                                  [Spring Gateway](07-JAVA_SPRING%2F22_Spring-Gateway%2FReadme.md)                                   |       [async/await](08-JAVASCRIPT/11_async-await/Readme.md)                                                                         |                 -                      | 2024.09.10 |
-| 33주차 |                                   [Dynamic Query](07-JAVA_SPRING%2F23_Dynamic-Query%2FReadme.md)                                    |      [HTTP/1.1 vs HTTP/2](03-NETWORK/6_HTTP1.1-HTTP2/Readme.md)                                                                          |                 -                      | 2024.09.17 |
+| 33주차 |                                   [Dynamic Query](07-JAVA_SPRING%2F23_Dynamic-Query%2FReadme.md)                                    |      [HTTP/1.1 vs HTTP/2](03-NETWORK/6_HTTP1.1-HTTP2/Readme.md)                                                                          |                 -                      | 2024.09.18 |
+| 34주차 |                                  [Spring Security](07-JAVA_SPRING%2F24_SpringSecurity%2FReadme.md)                                  |                                                                                |                 -                      | 2024.09.24 |
 
 </details>
 
