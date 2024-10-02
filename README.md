@@ -77,7 +77,7 @@
 | 32주차 |                                  [Spring Gateway](07-JAVA_SPRING%2F22_Spring-Gateway%2FReadme.md)                                   |       [async/await](08-JAVASCRIPT/11_async-await/Readme.md)                                                                         |                 -                      | 2024.09.10 |
 | 33주차 |                                   [Dynamic Query](07-JAVA_SPRING%2F23_Dynamic-Query%2FReadme.md)                                    |      [HTTP/1.1 vs HTTP/2](03-NETWORK/6_HTTP1.1-HTTP2/Readme.md)                                                                          |                 -                      | 2024.09.18 |
 | 34주차 |                                  [Spring Security](07-JAVA_SPRING%2F24_SpringSecurity%2FReadme.md)                                  |         [SubnetMask & Gateway](03-NETWORK/19_Subnetmask-gateway/Readme.md)                                                                       |                 -                      | 2024.09.24 |
-| 35주차 |                                           [static](07-JAVA_SPRING%2F5_static%2FReadme.md)                                           |                                                                                |                 -                      | 2024.10.02 |
+| 35주차 |                                           [static](07-JAVA_SPRING%2F5_static%2FReadme.md)                                           |        [React 디자인 패턴](08-JAVASCRIPT/12_React-Design-Pattern/Readme.md)                                                                        |                 -                      | 2024.10.02 |
 
 </details>
 
