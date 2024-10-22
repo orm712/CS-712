@@ -118,7 +118,7 @@ public class ChildClass extends ParentClass {
 
 ```
 
-### Documented
+### @Documented
 > - 어노테이션이 Javadoc에 포함되도록 설정
 > - 기본적으로 어노테이션은 Javadoc에 포함되지 않지만, 이 메타 어노테이션을 사용하면 어노테이션 설명이 문서에 포함
 
