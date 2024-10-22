@@ -4,8 +4,9 @@
 > - 컴파일러 지시나 런타임 시 특정 기능을 활성화하흔 데 사용된다.
 > - 자바에서 제공하는 기본 어노테이션 외에도 커스텀 어노테이션을 정의할 수 있다.
 > - Java 5부터 등장한 기능
+> - ### `소스 코드가 컴파일되거나 실행될 때 컴파일러 및 다른 프로그램에게 필요한 정보를 전달해주는 요소`
 
-## 자바에서 제공하는 기본 어노테이션
+## 자바에서 제공하는 기본 어노테이션(표준 어노테이션)
 ### @Override
 > - 메서드가 부모 클래스의 메서드를 오버라이딩할 때 사용
 > - 컴파일러가 메서드 오버라이딩이 제대로 되었는지 확인하게 해주며, 실수로 다른 메서드를 작성하는 문제를 방지한다.
@@ -17,18 +18,33 @@ public String toString() {
 
 ```
 
+> @Override를 사용하지 않을 경우 아래 경우에서는 그냥 새로운 메서드를 정의하는 것으로 간주하여, 에러 발생X
+```java
+class SuperClass {
+	void eat() {...}
+}
+
+class SubClass extends UpperClass {
+	void eta(int a) {...}
+    // 프로그래머의 오타로 eat을 eta로 입력
+}
+```
+
 ### @Deprecated
 > - 더 이상 사용되지 않는 클래스, 메서드, 필드에 붙이는 어노테이션
 > - 이 어노테이션이 붙은 요소를 사용하면 컴파일 시 경고 발생
+> - 새로운 버전의 JDK가 등장하여 더 이상 사용하지 않는 필드나 메서드가 있을 경우에 사용
+>   - 하위 버전의 호환성 문제로 삭제하기 곤란하여 `남겨두어야만 할 때` 사용
 ```java
 @Deprecated
 public void oldMethod() {
     // 더 이상 사용되지 않음
 }
 ```
+![img_1.png](img_1.png)
 
 ### @SuppressWarnings
-> - 컴파일러 경고를 무시할 때 사용
+> - `컴파일 경고`를 무시할 때 사용
 > - 특정 경고만 무시할 수도 있고, 모든 경고를 무시할 수도 있다.
 ```java
 @SuppressWarnings("unchecked")
@@ -36,9 +52,14 @@ public void method() {
     List rawList = new ArrayList(); // unchecked 경고 발생
 }
 ```
+> - 속성으로 all, deprecation, fallthrough, finally, null, unchecked, unused가 있다.
+> - @SuppressWarnings({"deprecation","unchecked","null"}) 와 같이 여러 개 한번에 지정 가능
+> - ![img_2.png](img_2.png)
 
 ### @FunctionalInterface
-> - 인터페이스가 단일 추상 메서드를 갖는 함수형 인터페이스임을 명시한다.
+> - 인터페이스가 단일 추상 메서드를 갖는 함수형 인터페이스인지 확인하는 어노테이션
+>   - 함수형 인터페이스 : 추상 메서드가 오직 하나인 인터페이스
+>     - default method 또는 static method는 여러 개 있어도 상관없음
 > - 함수형 프로그래밍, 특히 람다 표현식에서 주로 사용
 ```java
 @FunctionalInterface
@@ -48,7 +69,10 @@ public interface MyFunctionalInterface {
 ```
 
 ## 메타 어노테이션
-> 어노테이션을 정의할 때 사용할 수 있는 어노테이션
+> - 어노테이션을 정의할 때 사용할 수 있는 어노테이션
+> - ![img_3.png](img_3.png)
+> - @interface로 정의
+
 ### @Retention
 > - 어노테이션이 어느 시점까지 유지될지를 지정
 > - RetentionPolicy.SOURCE: 소스 코드에만 존재하고 컴파일 시 사라짐.
@@ -109,16 +133,18 @@ public @interface DocumentedAnnotation {
 > - 자바 개발에서 코드의 보일러플레이트(반복되는 코드)를 줄이기 위해 나온 외부 어노테이션
 > - @Getter, @Setter, @ToString, @EqualsAndHashCode, @NoArgsConstructor, @AllArgsConstructor, @RequiredArgsConstructor
 > - @Data -> 위에 것들 종합
+>   - @Setter가 들어가 있기 때문에 Entity에서는 사용하지 않고 DTO에서 사용
 
 ### Lombok은 어떻게 동작하는 걸까?
-> - Lombok은 컴파일 타임에 동작하며, 자바 컴파일러의 어노테이션 프로세싱 기능을 사용한다.
-> - 자바 컴파일러는 소스 코드를 컴파일할 때 Annotation Processor를 실행하여 런타임에 영향을 미치지 않고, 컴파일된 바이트코드에만 변화를 준다.
+> - Lombok은 `컴파일 타임`에 동작하며, 자바 컴파일러의 어노테이션 프로세싱 기능을 사용한다.
+> - 자바 컴파일러는 소스 코드를 컴파일할 때 Annotation Processor를 실행하여 런타임에 영향을 미치지 않고, `컴파일된 바이트코드`에만 변화를 준다.
+> - ![img_4.png](img_4.png)
 
 > - AST(Abstract Syntax Tree, 추상 구문 트리)
->   - 소스 코드의 구문 구조를 트리 형태로 표현한 자료 구조
+>   - 소스 코드의 구문 구조를 `트리 형태`로 표현한 자료 구조
 >   - 자바뿐만 아니라 대부분의 프로그래밍 언어로 작성된 소스는 컴파일러에 의해 컴파일 과정에서 AST를 구성하게 된다.
 > - ![img.png](img.png)
->   - 컴파일러는 먼저 소스 코드를 읽어드리고 그 코드를 기반으로 AST를 생성한다.
+>   - 컴파일러는 먼저 소스 코드를 읽고 그 코드를 기반으로 AST를 생성한다.
 >     - 이 AST안에서 소스 코드가 문법적으로 올바른지를 검사.(중괄호가 맞는지, 변수 선언이 맞는지)
 >     - AST를 기반으로 컴파일러는 변수, 메서드 호출을 분석하고 올바르게 사용되었는지 확인
 >       - 타입 검사, 스코프 검사, 중복 선언
@@ -137,6 +163,7 @@ public @interface DocumentedAnnotation {
 ### 컴파일 타임에서의 어노테이션 처리
 > - 컴파일러는 소스 코드를 컴파일할 때 어노테이션을 인식하고 처리한다.
 >   - 어노테이션 프로세서가 처리
+>   - AST를 구성하는 동안 특정 어노테이션 사용 분석
 > - 컴파일 시점에 어노테이션을 분석하고 추가적인 코드를 생성하거나 검증할 수 있다.
 >   - 예를 들어 Lombok은 컴파일 시점에 getter, setter 메서드를 생성하는 어노테이션 프로세서로서 동작한다.
 
@@ -217,6 +244,7 @@ public class SellerInfo {
 // RecordComponent를 사용하여 필드에서 어노테이션을 추출
 RecordComponent[] recordComponents = SellerInfo.class.getRecordComponents();
 List<RecordComponent> excelComponents = Arrays.stream(recordComponents)
+        //스트림을 순회하면서 각 RecordComponent가 @ExcelColumn이 붙어있는지 검사
   .filter(component -> component.isAnnotationPresent(ExcelColumn.class))
   .sorted(Comparator.comparingInt(
       component -> component.getAnnotation(ExcelColumn.class).order()))
