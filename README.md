@@ -79,7 +79,7 @@
 | 34주차 |                                  [Spring Security](07-JAVA_SPRING%2F24_SpringSecurity%2FReadme.md)                                  |         [SubnetMask & Gateway](03-NETWORK/19_Subnetmask-gateway/Readme.md)                                                                       |                 -                      | 2024.09.24 |
 | 35주차 |                                           [static](07-JAVA_SPRING%2F5_static%2FReadme.md)                                           |        [React 디자인 패턴](08-JAVASCRIPT/12_React-Design-Pattern/Readme.md)                                                                        |                 -                      | 2024.10.02 |
 | 36주차 |                                    [JPA 연관관계](07-JAVA_SPRING%2F25_JPA-Relationship%2FReadme.md)                                     |     [JWT](05-ETC/13_JWT/Readme.md)                                                                           |                 -                      | 2024.10.08 |
-| 37주차 |                                      [Annotation](07-JAVA_SPRING%2F26_annotation%2FReadme.md)                                       |                                                                                |                 -                      | 2024.10.22 |
+| 37주차 |                                      [Annotation](07-JAVA_SPRING%2F26_annotation%2FReadme.md)                                       |     [Blocking vs Non-Blocking](02-OPERATING_SYSTEM/23_Blocking-NonBlocking/Readme.md)                                                                           |                 -                      | 2024.10.22 |
 
 </details>
 
