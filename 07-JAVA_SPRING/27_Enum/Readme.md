@@ -1,5 +1,5 @@
 # Enum
-> - 특정 집합의 상수들을 나타내는 특수한 데이터 타입
+> - 특정 집합의 `상수`들을 나타내는 특수한 데이터 타입
 > - `객체 지향적`인 방식으로 상수를 관리할 수 있다.
 > - 상태나 설정을 나타날 때 유용하게 사용
 
@@ -11,6 +11,76 @@ public enum Season {
 }
 ```
 > - 위와 같이 네 개의 상수 값을 가질 수 있다.
+> - 위의 값들 외에는 허용되지 않으므로 상수 값에 잘못된 값을 할당할 위험이 줄어든다.
+> - 상속 불가.
+>   - enum 타입은 다른 클래스를 상속할 수 없지만, 인터페이스는 구현할 수 있다.
+```java
+public interface Describable {
+    String getDescription();
+}
+
+public enum Season implements Describable {
+    SPRING("Warm and breezy"), 
+    SUMMER("Hot and sunny"), 
+    FALL("Cool and crisp"), 
+    WINTER("Cold and snowy");
+
+    private final String description;
+
+    Season(String description) {
+        this.description = description;
+    }
+
+    @Override
+    public String getDescription() {
+        return description;
+    }
+}
+```
+> - 내부 필드와 메서드를 가질 수 있다.
+>   - 복잡한 상수 값을 정의하거나 관련 동작을 추가할 수 있다.
+```java
+public enum Season {
+    SPRING("Warm"), SUMMER("Hot"), FALL("Cool"), WINTER("Cold");
+
+    private final String description;
+
+    // 생성자
+    Season(String description) {
+        this.description = description;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+}
+
+```
+
+## 주요 메서드
+### values() : enum의 모든 값을 배열로 반환한다.
+```java
+for (Season s : Season.values()) {
+    System.out.println(s);
+}
+```
+### ordinal() : 해당 enum 상수의 순서를 반환한다. (0부터 시작)
+```java
+System.out.println(Season.SPRING.ordinal()); // 0
+```
+### name() : 상수의 이름을 반환한다.
+```java
+System.out.println(Season.SUMMER.name()); // "SUMMER"
+```
+### valueOf(String name) : 주어진 이름에 해당하는 enum 상수를 반환한다.
+```java
+Season season = Season.valueOf("WINTER");
+```
+
+## enum의 장점
+> - 가독성 : 코드에서 의미 있는 상수 집합을 쉽게 표현할 수 있다.
+> - 안전성 : 잘못된 상수 값 사용을 방지할 수 있다.
+> - 유지 보수성 : 상수와 그와 관련된 기능을 한 곳에서 관리할 수 있다.
 
 ## 특징
 > - 문자열과 비교해, IDE의 적극 지원을 받을 수 있다.
