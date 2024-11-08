@@ -81,6 +81,7 @@
 | 36주차 |                                    [JPA 연관관계](07-JAVA_SPRING%2F25_JPA-Relationship%2FReadme.md)                                     |     [JWT](05-ETC/13_JWT/Readme.md)                                                                           |                 -                      | 2024.10.08 |
 | 37주차 |                                      [Annotation](07-JAVA_SPRING%2F26_annotation%2FReadme.md)                                       |     [Blocking vs Non-Blocking](02-OPERATING_SYSTEM/23_Blocking-NonBlocking/Readme.md)                                                                           |                 -                      | 2024.10.22 |
 | 38주차 |                                            [Enum](07-JAVA_SPRING%2F27_Enum%2FReadme.md)                                             |    [TCP & UDP](03-NETWORK/7_TCP-UDP/Readme.md)                                                                            |                 -                      | 2024.10.31 |
+| 39주차 |                                            [AWS ECS](05-ETC%2F22_AWS%20ECS%2FReadme.md)                                             |                                                                                |                 -                      | 2024.11.08 |
 
 </details>
 
