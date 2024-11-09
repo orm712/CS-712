@@ -69,7 +69,8 @@
 
 ### 주요 구성 요소
 #### 이벤트
-> - JSON 형식의 데이터 객체로, 이벤트를 생성한 소스의 상태 변경 기술
+> - JSON 형식의 데이터 객체로, 이벤트를 생성한 소스의 `상태 변경` 기술
+> - AWS에서 서비스 상태가 변경될 때 이벤트가 생성
 ```json
 {
   "source": "aws.ec2",
@@ -80,21 +81,25 @@
   }
 }
 ```
+> - 위와 같은 경우 EC2 인스턴스 상태가 `stopped` 상태로 변경되었을 때 발생한 이벤트
 
 #### 이벤트 버스
 > - 이벤트가 생성되고 전달되는 버스
 
 #### 규칙(Rule)
 > - 이벤트가 발생한 경우, Event Rule과 매칭되는 이벤트와 Target으로 라우팅 된다.
+> - EventBridge로 전달된 수많은 Event 중에서 필요한 이벤트만 필터링하기 위해 조건을 정의하는 규칙
 ```json
 {
   "source": ["aws.ec2"],
   "detail-type": ["EC2 Instance State-change Notification"],
   "detail": {
+    "instance-id": ["i-0abcd1234efgh5678"],
     "state": ["stopped"]
   }
 }
 ```
+> - 위와 같은 경우 stop된 ec2인스턴스 중에서 특정 인스턴스 id만 필터링해서 가져오기 위한 규칙
 ```json
 {
   "source": ["aws.s3"],
