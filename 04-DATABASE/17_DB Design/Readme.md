@@ -23,7 +23,7 @@
 
 ### 개선된 설계(정규화)
 > - User 테이블 : 사용자 정보 저장
->   - ![img_1.png](img_1.png
+>   - ![img_1.png](img_1.png)
 > - Children 테이블 : 자녀 정보 저장
 >   - ![img_2.png](img_2.png)
 > - Icons 테이블 : 아이콘 정보 저장
