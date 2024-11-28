@@ -86,4 +86,6 @@ CREATE INDEX idx_customer_order ON orders (customer_id, order_id, order_date);
 > - 쿼리 실행 계획(MySQL의 EXPLAIN)을 확인해서 실제로 row를 덜 접근하는지 확인
 >   - `EXPLAIN SELECT order_id, order_date FROM orders WHERE customer_id = 123;`
 >   - Extra 필드에 `Using Index`가 표시되면 커버링 인덱스가 성공적으로 적용된 것
+>       - ![image](https://github.com/user-attachments/assets/06f8d1a2-dcff-4ebd-8e28-3daccb9bc140)
+
 
