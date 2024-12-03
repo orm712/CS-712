@@ -32,23 +32,24 @@ public class User implements Serializable {
 > - 직렬화된 객체의 버전 관리를 위해 사용
 > - 직렬화하면 내부에서 자동으로 SerialVersionUID라는 고유의 번호를 생성하여 클래스의 버전을 관리한다
 > - 클래스의 변경 사항이 있어도 동일한 `serialVersionUID`가 있다면 역직렬화가 가능
+>   - 같은 serialVersionUID만 직렬화/역직렬화가 가능하다.
 > - 명시하지 않으면 JVM이 자동 생성하지만, 클래스가 변경되면 값도 변경되므로 명시적으로 선언하는 것이 좋다
 >   - serialVersionUID가 선언되어 있지 않으면 클래스의 기본 해쉬값을 사용하게 된다
 
 ## 직렬화 동작 과정
 ### 직렬화
-> - `ObjectOutputStream`을 사용해 객체를 직렬화한다
+> - `java.io.ObjectOutputStream`을 사용해 객체를 직렬화한다
 ```java
 try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("data.obj"))) {
-    oos.writeObject(myObject);
+    oos.writeObject(myObject); //객체 저장
 }
 ```
 
 ### 역직렬화
-> - `ObjectInputStream`을 사용해 객체를 복원한다.
+> - `java.io.ObjectInputStream`을 사용해 객체를 복원한다.
 ```java
 try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("data.obj"))) {
-    MyClass myObject = (MyClass) ois.readObject();
+    MyClass myObject = (MyClass) ois.readObject(); //객체 복원
 }
 ```
 
@@ -62,11 +63,15 @@ try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("data.obj
 >   - RMI(Remote Method Invocation)와 같은 기술에서 사용됩니다.
 > - JVM의 자동 처리
 >   - ObjectOutputStream과 ObjectInputStream을 사용하여 자동으로 직렬화 및 역직렬화가 수행되므로 개발자는 복잡한 변환 로직을 구현할 필요가 없다.
+>   - 데이터 타입이 자동으로 맞춰준다.
+>   - 시스템이 종료되더라도 없어지지 않으며 영속화된 데이터이기 때문에 네트워크로 전송도 가능하다.
+>     - 그리고 필요할 때 직렬화된 객체 데이터를 가져와서 역직렬화하여 객체를 바로 사용할 수 있게 된다.
 > - 객체 그래프 직렬화
 >   - 객체가 다른 객체를 참조하고 있어도, 해당 참조 객체도 함께 직렬화.
 >   - 객체 간의 연관 관계를 유지한 상태로 저장 및 복원 가능.
 > - 사용법이 간단
 >   - Serializable 인터페이스를 구현하기만 하면 객체 직렬화 기능을 쉽게 적용할 수 있다.
+>     - 기본 자바 라이브러리만 이용하더라도 직렬화/역직렬화 가능
 
 ### 단점
 > - 성능 문제
@@ -88,10 +93,12 @@ try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("data.obj
 > - 영속성 관리 한계
 >   - 파일이나 데이터베이스 같은 외부 시스템과 직접 연결된 저장소 관리를 효율적으로 처리하지 못한다.
 
+---
 
 ## SpringBoot에서 JSON 변환 과정
 1. 클라이언트 요청 → JSON 데이터를 수신
 > - 클라이언트가 서버로 JSON 데이터를 전송하면 HTTP 요청의 Content-Type 헤더가 `application/json`으로 설정
+>   - application/json : HTTP 요청의 Body가 JSON형식임을 서버에 알리는 헤더
 2. HTTP 요청 처리 과정
 > - DispatcherServlet 동작
 >   - 모든 HTTP 요청은 Spring MVC의 `DispatcherServlet`에서 시작된다.
@@ -102,13 +109,18 @@ try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("data.obj
 >   - 매핑된 컨트롤러 메서드를 호출하고 결과를 반환한다.
 3. JSON → Java 객체 변환 (요청 데이터 처리)
 > - 클라이언트가 보낸 JSON 데이터는 `@RequestBody`를 사용하여 자동으로 Java 객체로 변환
+>   - @RequestBody가 Spring 내부 HttpMessageConverter를 사용하여 java 객체 -> json / json -> java 객체로 변환
+>     - HttpMessageConverter는 인터페이스고, 각 상황에 맞는 구현체들을 매핑한다.(json, xml, ...)
+>     - 요청의 Content-Type 헤더를 기반으로 적절한 HttpMessageConverter를 선택한다.
+>     - 예: Content-Type: application/json → MappingJackson2HttpMessageConverter
 > - Jackson 라이브러리 역할
 >   - Spring Boot는 기본적으로 Jackson 라이브러리를 사용해 JSON 데이터를 Java 객체로 변환
->   - 요청 본문(JSON 데이터)은 HttpMessageConverter의 구현체인 `MappingJackson2HttpMessageConverter`에 의해 처리된다.
+>   - 요청 본문(JSON 데이터)은 `HttpMessageConverter`의 구현체인 `MappingJackson2HttpMessageConverter`에 의해 처리된다.
+>     - MappingJackson2HttpMessageConverter 내부에 ObjectMapper를 포함하고 있는데, 이를 통해서 직렬화/역직렬화 진행
 >   - 이 과정에서 JSON 필드 이름을 Java 객체의 필드 이름에 매핑
 4. Java 객체 → JSON 변환 (응답 데이터 처리)
 > - Jackson에 의한 직렬화
->   - 컨트롤러 메서드가 반환한 Java 객체는 다시 HttpMessageConverter를 통해 JSON으로 변환된다.
+>   - 컨트롤러 메서드가 반환한 Java 객체는 다시 `HttpMessageConverter`를 통해 JSON으로 변환된다.
 >   - 이 작업은 `MappingJackson2HttpMessageConverter`에 의해 처리된다.
 > - 클라이언트로 JSON 응답 전송
 >   - Spring Boot는 JSON 데이터를 HTTP 응답 본문에 포함하여 클라이언트로 전송한다.
