@@ -136,6 +136,56 @@ const pt = new Point(10, 20);
 ```
 - 다른 객체지향 언어처럼 자바스크립트 클래스의 프로퍼티와 메서드에 타입을 지정할 수 있게 해줌
 - 또한, 자바스크립트와 달리 접근 제한자를 지원해  다른 객체지향 언어에서 지원하는 `public`, `protected`, `private`와 같은 접근 제한자를 지원함
+#### 상속
+```ts
+interface Pingable {
+	ping(): void;
+}
+ 
+class Sonar implements Pingable {
+	ping() {
+		console.log("ping!");
+	}
+}
+ 
+class Ball implements Pingable {
+	// 오류: Ball은 Pingable의 메서드인 ping을 구현하고 있지 않음
+	// Class 'Ball' incorrectly implements interface 'Pingable'.
+	// Property 'ping' is missing in type 'Ball' but required in type 'Pingable'.
+	pong() {
+		console.log("pong!");
+	}
+}
+```
+- 또한, 타입스크립트에선 클래스가 다른 인터페이스를 구현(상속)하는 것이 가능
+	- 만약 구현하는 인터페이스에 포함된 메서드를 구현하고 있지 않다면 에러 발생
+- 다만, 다른 언어들과 달리 특정 인터페이스를 구현한다고 해서 클래스의 본질이 바뀌는건 아님
+	- 구현한 메서드의 `인자 이름`을 바꾸었다고 `에러가 발생하지 않고`, 옵셔널 프로퍼티가 존재하는 인터페이스를 구현한다고 이를 구현한 클래스에서 해당 프로퍼티가 생겨나는 것이 아님
+```ts
+// CASE 1: 메서드 인자 이름을 바꾼 경우
+interface Checkable {
+	check(name: string): boolean;
+}
+ 
+class NameChecker implements Checkable {
+	check(s: string) {
+	// 인자 이름을 바꾸어도, 인자 갯수와 타입, 그리고 반환값은 동일하므로 
+	// 별도의 에러 발생 X
+		return s.toLowerCase() === "ok";
+	}
+}
+
+// CASE 2: 실제 클래스에는 존재하지 않는 프로퍼티 참조하기
+interface A {
+	x: number;
+	y?: number;
+}
+class C implements A {
+	x = 0;
+}
+const c = new C();
+c.y = 10; // ERROR: Property 'y' does not exist on type 'C'
+```
 ### Enum [#](https://www.typescriptlang.org/docs/handbook/enums.html#handbook-content)
 ```ts
 // UP이 1로 초기화되어있으므로, 이어지는 멤버들은 모두 auto-increment의 형태로 증가함
