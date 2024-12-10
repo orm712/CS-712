@@ -85,6 +85,7 @@
 | 40주차 |                                             [Postman](05-ETC%2F23_Postman%2FReadme.md)                                              |        [가상 DOM 구현 해보기](08-JAVASCRIPT/14_Virtual-DOM-Implementation/Readme.md)                                                                        |                 -                      | 2024.11.14 |
 | 41주차 |                                          [DB 설계](04-DATABASE%2F17_DB%20Design%2FReadme.md)                                          |      [WebSocket in JS](08-JAVASCRIPT/15_WebSocket/Readme.md)                                                                          |                 -                      | 2024.11.21 |
 | 42주차 |                                    [Serializable](07-JAVA_SPRING%2F28_Serializable%2FReadme.md)                                     |       [Typescript](08-JAVASCRIPT/16_Typescript/Readme.md)                                                                         |                 -                      | 2024.12.03 |
+| 43주차 |                                              [TDD 이론](05-ETC%2F24_TDD%201%2FReadme.md)                                              |                                                                                |                 -                      | 2024.12.12 |
 
 </details>
 
